@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>大学通——首页</title>
+		<link rel="stylesheet" type="text/css" href="css/lib/swiper-3.4.2.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+	<body>
+		<!--head-->
+		<section class="top">
+			<div class="left topLeft">			
+				<img src="" alt="LOGO"/>
+				<div class="topNav">
+					<ul>
+						<li>
+							<a href="#" class="currPage">首页</a>
+						</li>
+						<li>
+							<a href="#">分类浏览<span></span>
+							</a>
+						</li>
+						<li>
+							<a href="#">活动</a>
+						</li>
+						<li>
+							<a href="#">课程</a>
+						</li>
+						<li>
+							<a href="#">问答</a>
+						</li>
+						<li>
+							<a href="#">社区</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="right topRight">
+				<a href="#">注册</a>
+				<a href="#">登录</a>
+			</div>			
+		</section><!--head end-->
+		
+		<!--container-->
+		<section class="container">
+			<div class="left containerLeft">			
+				<!--轮播图-->
+				<div class="left swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<!--<img src="img/封面21.jpg" alt="Slide 1"/>-->
+							<a href="#" class="swiper-slide-a">这是轮播图1</a>
+						</div>	
+						<div class="swiper-slide">
+							<!--<img src="img/封面21.jpg" alt="Slide 2"/>-->
+						</div>	
+						<div class="swiper-slide">
+							<!--<img src="img/封面21.jpg" alt="Slide 3"/>-->
+						</div>	
+					</div>
+					<!--分页器-->
+					<div class="swiper-pagination">
+		
+					</div>
+					<!--导航按钮-->
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
+					<!--滚动条-->
+					<!--<div class="swiper-scrollbar"></div>-->
+				</div><!--轮播图 end-->	
+				
+				<!--资讯-->
+				<div class="right zixun">
+					<ul>
+						<li>
+							<a href="#" title="资讯1" class="zixunItem">
+								<img src="" alt="资讯图1"/>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="资讯2" class="zixunItem zixunItem2">
+								<img src="" alt="资讯图2"/>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="资讯3" class="zixunItem">
+								<img src="" alt="资讯图3"/>
+							</a>
+						</li>
+					</ul>
+				</div><!--资讯end-->
+				
+				<!--文章列表-->
+				<div class="artical">
+					<ul>
+						<li class="articalItem">
+							<a href="#" title="artical" class="left articalLeft">
+								<img src="" alt="articalImg"  class="articalImg"/>
+							</a>
+							<div class="right articalRight">
+								<a href="#" title="articalTitle" class="articalTitle">
+									这是标题一
+								</a>
+								<div class="articalFrom">
+									<a href="#" title="author">
+										<img src="" alt="authorImg"/>
+										<span class="authorName">作者</span>
+									</a>
+									<span class="articalTime">2017-9-4 11:20:39</span>
+									<p class="articalDetail">这是详情这是详情这是详情这是详情这是详情这是详
+										情这是详情这是详情这是详情这是详情这是详情这是详情这是详情这是详情
+										……
+									</p>
+								</div>
+							</div>							
+						</li>
+					</ul>
+				</div><!--文章列表end-->
+				
+			</div><!--containerLeft end-->
+			
+			<!--containerRight-->
+			<div class="right containerRight">
+				<p>agda</p>
+			</div><!--containerRight end-->
+		</section><!--container end-->
+		
+		
+		<!--footer-->
+		<section class="footer">
+			
+		</section>
+		<!--footer end-->
+	</body>
+	<script type="text/javascript" src="js/lib/jquery-1.10.1.min.js" ></script>
+	<script type="text/javascript" src="js/lib/swiper-3.4.2.jquery.min.js" ></script>
+	<script>
+		$(document).ready(function(){
+			//初始化Swiper，页面加载完成后再初始化
+			var mySwiper = new Swiper ('.swiper-container',{
+				//direction:'horizontal',
+				loop:true,
+			
+				//分页器
+				pagination:'.swiper-pagination',
+				
+				//前进后退按钮
+				nextButton:'.swiper-button-next',
+				prevButton:'.swiper-button-prev',
+				
+				//滚动条
+//				scrollbar:'.swiper-scrollbar',
+				
+				//小圆点可点击
+				paginationClickable:true,
+				spaceBetween:30,
+				centeredSlides:true,
+				autoplay:2500,
+				autoplayDisableOnInteraction:false,
+				
+				//显示页数
+//				paginationBulletRender:function(swiper,index,className){
+//					return '<span class="'+className+'">'+(index+1)+'</span>';
+//				}
+			});
+		});
+	</script>
+</html>
