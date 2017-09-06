@@ -1,16 +1,22 @@
 <!DOCTYPE html>
+<!--
+	作者：hhc_mail@163.com
+	时间：2017-08-05
+	描述：大学通——首页
+-->
 <html>
 	<head>
 		<meta charset="utf-8" />
 		<title>大学通——首页</title>
 		<link rel="stylesheet" type="text/css" href="css/lib/swiper-3.4.2.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
 	</head>
 	<body>
 		<!--head-->
 		<section class="top">
 			<div class="left topLeft">			
-				<img src="" alt="LOGO"/>
+				<img src="img/logo.png" alt="LOGO"/>
 				<div class="topNav">
 					<ul>
 						<li>
@@ -48,14 +54,16 @@
 				<div class="left swiper-container">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<!--<img src="img/封面21.jpg" alt="Slide 1"/>-->
-							<a href="#" class="swiper-slide-a">这是轮播图1</a>
+							<!--<img src="img/" alt="Slide 1"/>-->
+							<a href="#" class="swiper-slide-a">
+								<img src="img/swiper1.jpg" alt="Slide 1"/>
+							</a>
 						</div>	
 						<div class="swiper-slide">
-							<!--<img src="img/封面21.jpg" alt="Slide 2"/>-->
+							<img src="img/swiper2.jpg" alt="Slide 2"/>
 						</div>	
 						<div class="swiper-slide">
-							<!--<img src="img/封面21.jpg" alt="Slide 3"/>-->
+							<img src="img/swiper3.jpg" alt="Slide 3"/>
 						</div>	
 					</div>
 					<!--分页器-->
@@ -74,45 +82,111 @@
 					<ul>
 						<li>
 							<a href="#" title="资讯1" class="zixunItem">
-								<img src="" alt="资讯图1"/>
+								<img src="img/zixun1.jpg" alt="资讯图1"/>
 							</a>
 						</li>
 						<li>
 							<a href="#" title="资讯2" class="zixunItem zixunItem2">
-								<img src="" alt="资讯图2"/>
+								<img src="img/zixun2.jpg" alt="资讯图2"/>
 							</a>
 						</li>
 						<li>
 							<a href="#" title="资讯3" class="zixunItem">
-								<img src="" alt="资讯图3"/>
+								<img src="img/zixun3.jpg" alt="资讯图3"/>
 							</a>
 						</li>
 					</ul>
 				</div><!--资讯end-->
 				
+				
 				<!--文章列表-->
 				<div class="artical">
+					<!--文章导航-->
+					<div class="articalNav">
+						<ul>
+							<li>
+								<a href="#" class="articalCurr">最新文章</a>
+							</li>
+							<li>
+								<a href="#">七日热文<span></span>
+								</a>
+							</li>
+							<li>
+								<a href="#">热门回答</a>
+							</li>
+							<li>
+								<a href="#">知识图谱</a>
+							</li>
+							<li>
+								<a href="#">快报</a>
+							</li>
+						</ul>
+					</div><!--文章导航end-->
+					
 					<ul>
 						<li class="articalItem">
-							<a href="#" title="artical" class="left articalLeft">
-								<img src="" alt="articalImg"  class="articalImg"/>
-							</a>
-							<div class="right articalRight">
-								<a href="#" title="articalTitle" class="articalTitle">
-									这是标题一
-								</a>
-								<div class="articalFrom">
-									<a href="#" title="author" class="author">
-										<img src="" alt="authorImg"/>						
-										<span class="authorName">作者</span>
-									</a>
-									<span class="articalTime">2017-9-4 11:20:39</span>
-									<p class="articalDetail">这是详情这是详情这是详情这是详情这是详情这是详
-										情这是详情这是详情这是详情这是详情这是详情这是详情这是详情这是详情
-										……
-									</p>
-								</div>
+							<div id="" class="mengbanTop">
+								<div class="mengban"></div>
 							</div>							
+							<div class="articalList">
+								<a href="#" title="artical" class="left articalLeft">
+									<img src="img/artical1.png" alt="articalImg"  class="articalImg"/>
+								</a>
+								<div class="right articalRight">
+									<a href="#" title="articalTitle" class="articalTitle">
+										作为交互设计师，该如何设计交互产品
+									</a>
+									<div class="articalFrom">
+										<a href="#" title="author" class="author">
+											<img src="img/author1.jpg" alt="authorImg"/>						
+										</a>
+										<span class="articalTime">&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="authorName">作者</a>&nbsp;&nbsp;·&nbsp;&nbsp;2017-9-4 11:20:39</span>
+										<p class="articalDetail">这是详情这是详情这是详情这是详情这是详情这是详
+											情这是详情这是详情这是详情这是详情这是详情这是详情这是详情这是详情
+											……
+										</p>
+										<p class="articalInfo">
+											<span><i class="fa fa-eye"></i>&nbsp;阅读&nbsp;2.2K</span>
+											&nbsp;&nbsp;&nbsp;&nbsp;
+											<span><i class="fa fa-star-o"></i>&nbsp;收藏&nbsp;2.2K</span>
+											&nbsp;&nbsp;&nbsp;&nbsp;
+											<span><i class="fa fa-thumbs-o-up"></i>&nbsp;被赞&nbsp;2.2K</span>
+										</p>
+									</div>
+								</div>	
+							</div>
+						</li>
+						<li class="articalItem">
+							<div id="" class="mengbanTop">
+								<div class="mengban"></div>
+							</div>
+							<div class="articalList">
+								<a href="#" title="artical" class="left articalLeft">
+									<img src="img/artical2.jpg" alt="articalImg"  class="articalImg"/>
+								</a>
+								<div class="right articalRight">
+									<a href="#" title="articalTitle" class="articalTitle">
+										电商问答，促转化的一种新方式
+									</a>
+									<div class="articalFrom">
+										<a href="#" title="author" class="author">
+											<img src="img/author2.jpeg" alt="authorImg"/>						
+										</a>
+										<span class="articalTime">&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="authorName">作者</a>&nbsp;&nbsp;·&nbsp;&nbsp;2017-9-4 11:20:39</span>
+										<p class="articalDetail">这是详情这是详情这是详情这是详情这是详情这是详
+											情这是详情这是详情这是详情这是详情这是详情这是详情这是详情这是详情
+											……
+										</p>
+										<p class="articalInfo">
+											<span><i class="fa fa-eye"></i>&nbsp;阅读&nbsp;2.2K</span>
+											&nbsp;&nbsp;&nbsp;&nbsp;
+											<span><i class="fa fa-star-o"></i>&nbsp;收藏&nbsp;2.2K</span>
+											&nbsp;&nbsp;&nbsp;&nbsp;
+											<span><i class="fa fa-thumbs-o-up"></i>&nbsp;被赞&nbsp;2.2K</span>
+										</p>
+									</div>
+								</div>	
+							</div>
 						</li>
 					</ul>
 				</div><!--文章列表end-->
@@ -126,11 +200,144 @@
 		</section><!--container end-->
 		
 		
+		<!--link-->
+		<section class="link">
+			<div class="hzhb">
+				<p>合作伙伴</p>
+				<ul>
+					<li class="hzhbItem">
+						<a href="#" title="链接1">
+							<img src="img/link1.jpg" alt="链接1"/>
+						</a>
+					</li>
+					<li class="hzhbItem">
+						<a href="#" title="链接2">
+							<img src="img/link2.jpg" alt="链接2"/>
+						</a>
+					</li>
+					<li class="hzhbItem">
+						<a href="#" title="链接3">
+							<img src="img/link3.jpg" alt="链接3"/>
+						</a>
+					</li>
+					<li class="hzhbItem">
+						<a href="#" title="链接4">
+							<img src="img/link4.jpg" alt="链接4"/>
+						</a>
+					</li>
+					<li class="hzhbItem">
+						<a href="#" title="链接5">
+							<img src="img/link5.jpg" alt="链接5"/>
+						</a>
+					</li>
+					<li class="hzhbItem">
+						<a href="#" title="链接6">
+							<img src="img/link6.jpg" alt="链接6"/>
+						</a>
+					</li>
+					<li class="hzhbItem">
+						<a href="#" title="链接7">
+							<img src="img/link7.jpg" alt="链接7"/>
+						</a>
+					</li>
+				</ul>
+				<p>友情链接</p>
+				<table border="" cellspacing="" cellpadding="">
+					<tr>
+						<td><a href="#">PM265</a></td>
+						<td><a href="#">阿猫阿狗导航</a></td>
+						<td><a href="#">ITFeed</a></td>
+						<td><a href="#">起点学院</a></td>
+						<td><a href="#">设计师导航</a></td>
+						<td><a href="#">360UXC</a></td>
+						<td><a href="#">迅雷CUED</a></td>
+						<td><a href="#">产品经理招聘</a></td>
+						<td><a href="#">站酷</a></td>
+						<td><a href="#">演界网</a></td>
+					</tr>
+					<tr>
+						<td><a href="#">PM265</a></td>
+						<td><a href="#">阿导航</a></td>
+						<td><a href="#">ITFeed</a></td>
+						<td><a href="#">起点院</a></td>
+						<td><a href="#">设计导航</a></td>
+						<td><a href="#">360XC</a></td>
+						<td><a href="#">迅雷CED</a></td>
+						<td><a href="#">产品理招聘</a></td>
+						<td><a href="#">酷</a></td>
+						<td><a href="#">演界</a></td>
+					</tr>
+					<tr>
+						<td><a href="#">PM265</a></td>
+						<td><a href="#">阿猫阿导航</a></td>
+						<td><a href="#">ITFeed</a></td>
+						<td><a href="#">起学院</a></td>
+						<td><a href="#">设计导航</a></td>
+						<td><a href="#">360UXC</a></td>
+						<td><a href="#">迅雷ED</a></td>
+						<td><a href="#">产品理招聘</a></td>
+						<td><a href="#">站酷</a></td>
+						<td><a href="#">演界网</a></td>
+					</tr>
+					<tr>
+						<td><a href="#">PM65</a></td>
+						<td><a href="#">阿狗导航</a></td>
+						<td><a href="#">ITFeed</a></td>
+						<td><a href="#">起点院</a></td>
+						<td><a href="#">设计导航</a></td>
+						<td><a href="#">360UXC</a></td>
+						<td><a href="#">迅雷CUED</a></td>
+						<td><a href="#">经理招聘</a></td>
+						<td><a href="#">站酷</a></td>
+						<td><a href="#">演界网</a></td>
+					</tr>
+				</table>
+			</div>			
+		</section><!--link end-->
+		
 		<!--footer-->
 		<section class="footer">
-			
+			<div class="footerArea">
+				<div class="footerLeft">
+					<img src="img/footer-logo.png" alt="底部LOGO"/>
+					<table border="0" cellspacing="0" cellpadding="0">		
+						<tr>
+							<td><a href="#">关于我们</a></td>
+							<td><a href="#">投稿须知</a></td>
+						</tr>
+						<tr>
+							<td><a href="#">免责声明</a></td>
+							<td><a href="#">意见反馈</a></td>
+						</tr>
+					</table>
+				</div>
+				<div class="footerMiddle">
+					<p>
+						人人都是产品经理（woshipm.com）是中国最大、
+						最活跃的以产品经理为核心的学习、交流、分享社群，
+						集媒体、教育、招聘、社群活动为一体，全方位服务产品经理，
+						微信公众号woshipm。成立7年以来举办在线讲座500余期，线下活动300+场，
+						覆盖北京、上海、广州、深圳、杭州、成都等10余城市，在互联网业内得到了广泛关注和高度好评。
+						社区目前拥有300万忠实粉丝，其中产品经理占比70万， 中国75%的产品经理都在这里。
+					</p>
+				</div>
+				
+				<div class="footerRight">
+					<ul>
+						<li>
+							<span><i class="fa fa-android"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;
+							<span><i class="fa fa-weixin"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;
+							<span><i class="fa fa-apple"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;
+							<span><i class="fa fa-weibo"></i></span>
+						</li>
+					</ul>
+					<p>企业内训/合作/投诉: 18676681707</p>
+				</div>
+				<div class="footerBottom">
+					<p>版权所有，此页面仅为模仿页面，不得用于商用，未经许可，不得转载</p>
+				</div>
+			</div>
 		</section>
-		<!--footer end-->
 	</body>
 	<script type="text/javascript" src="js/lib/jquery-1.10.1.min.js" ></script>
 	<script type="text/javascript" src="js/lib/swiper-3.4.2.jquery.min.js" ></script>
