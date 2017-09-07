@@ -15,36 +15,38 @@
 	<body>
 		<!--head-->
 		<section class="top">
-			<div class="left topLeft">			
-				<img src="img/logo.png" alt="LOGO"/>
-				<div class="topNav">
-					<ul>
-						<li>
-							<a href="#" class="currPage">首页</a>
-						</li>
-						<li>
-							<a href="#">分类浏览<span></span>
-							</a>
-						</li>
-						<li>
-							<a href="#">活动</a>
-						</li>
-						<li>
-							<a href="#">课程</a>
-						</li>
-						<li>
-							<a href="#">问答</a>
-						</li>
-						<li>
-							<a href="#">社区</a>
-						</li>
-					</ul>
+			<div class="topArea">			
+				<div class="left topLeft">			
+					<img src="img/logo.png" alt="LOGO"/>
+					<div class="topNav">
+						<ul>
+							<li>
+								<a href="#" class="currPage">首页</a>
+							</li>
+							<li>
+								<a href="#">分类浏览<span><i class="fa fa-angle-down"></i></span>
+								</a>
+							</li>
+							<li>
+								<a href="#">活动<span><i class="fa fa-angle-down"></i></span></a>
+							</li>
+							<li>
+								<a href="#">课程<span><i class="fa fa-angle-down"></i></span></a>
+							</li>
+							<li>
+								<a href="#">问答</a>
+							</li>
+							<li>
+								<a href="#">社区</a>
+							</li>
+						</ul>
+					</div>
 				</div>
+				<div class="right topRight">
+					<a href="#">注册</a>
+					<a href="#">登录</a>
+				</div>	
 			</div>
-			<div class="right topRight">
-				<a href="#">注册</a>
-				<a href="#">登录</a>
-			</div>			
 		</section><!--head end-->
 		
 		<!--container-->
@@ -97,7 +99,6 @@
 						</li>
 					</ul>
 				</div><!--资讯end-->
-				
 				
 				<!--文章列表-->
 				<div class="artical">
@@ -191,14 +192,139 @@
 					</ul>
 				</div><!--文章列表end-->
 				
+				<div class="getMore">
+					<a href="#">加载更多</a>
+				</div>			
 			</div><!--containerLeft end-->
 			
 			<!--containerRight-->
 			<div class="right containerRight">
-				<p>agda</p>
+				<!--圈子-->
+				<div class="quanzi">
+					<p class="joinQuanzi">
+						加入圈子
+					</p>
+					<div class="quanziInfo">
+						<img src="img/pm-erweima.jpg" alt="圈子"/>
+						<p>关注微信公众号</p>
+						<p>产品经理群</p>
+						<p>运营交流群</p>
+						<p>求职招聘群</p>
+						<p>Axure交流群</p>
+						<p>数据分析交流</p>
+					</div>
+					<div class="quanziDownload">
+						<span><i class="fa fa-apple">&nbsp;ios版下载</i></span>
+
+						<span class="android"><i class="fa fa-android">&nbsp;android版下载</i></span>
+					</div>
+				</div><!--圈子end-->
+				
+				<!--推荐作者-->
+				<div class="author">
+					<p class="tjAuthor">
+						<span>推荐作者</span>
+						<a href="#" class="right nextPage">
+							<i class="fa fa-chevron-circle-right"></i>
+						</a>
+						<a href="#" class="right prePage">
+							<i class="fa fa-chevron-circle-left"></i>
+						</a>
+					</p>
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td rowspan="2">
+								<a href="#">
+									<img src="img/tjAuthor1.jpg"/>
+								</a>
+							</td>
+							<td>
+								<a href="#">
+									辩手李沐阳
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								帅醒科技创始人及CEO
+							</td>
+						</tr>
+						
+						<tr>
+							<td rowspan="2">
+								<a href="#">
+									<img src="img/tjAuthor2.jpg"/>
+								</a>
+							</td>
+							<td>
+								<a href="#">
+									张亮leo
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								《从零开始做运营》作者
+							</td>
+						</tr>
+						
+						<tr>
+							<td rowspan="2">
+								<a href="#">
+									<img src="img/tjAuthor3.jpg"/>
+								</a>
+							</td>
+							<td>
+								<a href="#">
+									运营有毒
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								分享一些我的运营心得
+							</td>
+						</tr>
+						
+						<tr>
+							<td rowspan="2">
+								<a href="#">
+									<img src="img/tjAuthor4.jpg"/>
+								</a>
+							</td>
+							<td>
+								<a href="#">
+									韩丽
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								《运营实战指南》作者
+							</td>
+						</tr>
+						
+						<tr>
+							<td rowspan="2">
+								<a href="#">
+									<img src="img/tjAuthor5.jpg"/>
+								</a>
+							</td>
+							<td>
+								<a href="#">
+									UE小牛犊
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								致力于UX方法论的探索……
+							</td>
+						</tr>
+					</table>
+				</div>
 			</div><!--containerRight end-->
 		</section><!--container end-->
-		
 		
 		<!--link-->
 		<section class="link">
@@ -325,19 +451,53 @@
 				<div class="footerRight">
 					<ul>
 						<li>
-							<span><i class="fa fa-android"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;
-							<span><i class="fa fa-weixin"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;
-							<span><i class="fa fa-apple"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;
-							<span><i class="fa fa-weibo"></i></span>
+							<a href="#">
+								<span><i class="fa fa-android"></i></span>
+								<div class="disNone">
+    								<span class="top"></span>									
+									<img src="img/footer-appdownload.png" alt="安卓下载"/>									
+								</div>
+								<!--&nbsp;&nbsp;&nbsp;&nbsp;-->
+							</a>							
+						</li>
+						<li>
+							<a href="#">
+								<span><i class="fa fa-weixin"></i></span>
+								<div class="disNone">							
+									<span class="top"></span>	
+									<img src="img/footer-wechat.png" alt="微信"/>
+								</div>
+							</a>						
+						</li>
+						<li>
+							<a href="#">
+								<span><i class="fa fa-apple"></i></span>
+								<div class="disNone">							
+									<span class="top"></span>	
+									<img src="img/footer-appdownload (1).png" alt="苹果下载"/>
+								</div>
+							</a>	
+						</li>
+						<li>
+							<a href="#">
+								<span><i class="fa fa-weibo"></i></span>
+							</a>
 						</li>
 					</ul>
 					<p>企业内训/合作/投诉: 18676681707</p>
 				</div>
 				<div class="footerBottom">
-					<p>版权所有，此页面仅为模仿页面，不得用于商用，未经许可，不得转载</p>
+					<p>版权所有，此页面仅为模仿页面，不得用于商用，未经许可，不得转载。
+						邮箱:hhc_mail@163.com
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						blog:http://blog.csdn.net/henouren
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						github:https://github.com/chunhh
+					</p>
 				</div>
 			</div>
 		</section>
+		
 	</body>
 	<script type="text/javascript" src="js/lib/jquery-1.10.1.min.js" ></script>
 	<script type="text/javascript" src="js/lib/swiper-3.4.2.jquery.min.js" ></script>
@@ -360,7 +520,8 @@
 				
 				//小圆点可点击
 				paginationClickable:true,
-				spaceBetween:30,
+				//每次页面滑动的间距
+				spaceBetween:0,
 				centeredSlides:true,
 				autoplay:2500,
 				autoplayDisableOnInteraction:false,
