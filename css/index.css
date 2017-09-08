@@ -10,7 +10,7 @@
 }
 body{
 	font: 12px/1.5 "微软雅黑", 'Microsoft YaHei', Arial, simsun;
-	min-width:1220px;
+	/*min-width:1220px;*/
 }
 a{
 	text-decoration: none;
@@ -29,8 +29,8 @@ a{
 }
 /*top*/
 .top{
-	position: fixed;
-	top: 0;
+	/*position: fixed;*/
+	/*top: 0;*/
 	z-index: 99;
 	width: 100%;
 	background: #FFFFFF;
@@ -93,12 +93,50 @@ a{
 	font-size: 16px;
 	padding: 4px 10px 4px 10px;
 }
-
+.top .topNav .type{
+	background: #FFFFFF;
+	position: relative;
+	width: 20%;
+	height: 150px;
+	overflow: auto;
+	border: 1px solid #EEEEEE;
+	margin-top: 2%;
+}
+.top .topNav .type table{
+	/*width: 100%;*/
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+.top .topNav .type table td{
+	line-height: 14px;
+	padding: 0;
+}
+.top .topNav li:hover .type{
+	display: block;
+	position: absolute;
+	z-index: 99;
+}
+.top .topNav li:hover .qipao{
+	width: 14px;
+	height: 14px;
+	z-index: 999;
+	top: 82px;
+	margin-left: 16px;
+	position: absolute;
+	background: #FFFFFF;
+	/*border: 1px solid #EEEEEE;*/
+	border-width:1px;
+	border-style: solid solid solid solid;
+	border-color:#EEEEEE transparent transparent #EEEEEE;
+	transform: rotate(45deg);
+	display: block;
+}
 /*container-轮播图*/
 .container{
 	width: 80%;
 	margin: 0 auto;
-	margin-top: 104px;
+	margin-top: 40px;
 }
 .container .containerLeft{
 	width: 70%;
@@ -479,11 +517,17 @@ a{
 	position:absolute;
 }
 .footer .footerArea .footerRight ul li a:hover .disNone span.top{
-    border-width:13px; 
-    border-style:solid dashed dashed; 
-    border-color:#ffffff transparent transparent; 
+    border-width:10px; 
+    /*border-style:solid dashed dashed; 
+    border-color:#ffffff transparent transparent; */
+    border-style: solid solid solid solid;
+    border-color: #FFFFFF;
     left:46px; 
-    bottom:-23px;
+    bottom:-83px;
+    margin-top: 140px;
+    display: inline-block;
+	transform: rotate(45deg);
+	overflow: hidden;
 }
 
 .footer .footerArea .footerBottom{
@@ -491,3 +535,28 @@ a{
 	width: 50%;
 	padding-top: 14%;
 }
+
+
+
+
+
+/*圆形气泡框实现，在此例子上不显示*/
+/*.qipao{
+	width: 200px;
+	height: 60px;
+	margin: 20px 0 20px 200px;
+	background: #69A6D1;
+	text-align: center;
+	padding-top: 40px;
+	font-size: 16px;
+	border-radius: 50%;
+}
+.demo{
+	width: 38px;
+	height: 38px;
+	background: #69A6D1;
+	transform: rotate(70deg);
+	margin-left: 230px;	
+	margin-bottom: 200px;
+	margin-top: -60px;
+}*/

@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<!--head-->
-		<section class="top">
+		<section class="top" id="fixed">
 			<div class="topArea">			
 				<div class="left topLeft">			
 					<img src="img/logo.png" alt="LOGO"/>
@@ -26,6 +26,31 @@
 							<li>
 								<a href="#">分类浏览<span><i class="fa fa-angle-down"></i></span>
 								</a>
+								<div class="disNone qipao"></div>
+								<div class="disNone type">
+									
+									<table border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td><a href="#">产品经理</a></td>
+											<td><a href="#">产品设计</a></td>
+											<td><a href="#">产品体验</a></td>
+										</tr>
+										<tr>
+											<td><a href="#">交互设计</a></td>
+											<td><a href="#">互联网需求</a></td>
+											<td><a href="">电商产业</a></td>
+										</tr>
+										<tr>
+											<td><a href=""><a href="#" class="first">学生专区</a></td>
+											<td><a href=""><a href="#">电子商务</a></td>
+											<td><a href=""><a href="#">产品体验</a></td>
+										</tr>
+										<tr>
+											<td><a href=""><a href="#" class="first">二手市场</a></td>
+											<td><a href=""><a href="#">产品分析</a></td>
+										</tr>
+									</table>
+								</div>								
 							</li>
 							<li>
 								<a href="#">活动<span><i class="fa fa-angle-down"></i></span></a>
@@ -497,6 +522,11 @@
 				</div>
 			</div>
 		</section>
+		<!--圆形气泡框demo，在此例子中不用
+		<div id="" class="qipao">
+			这是气泡框demo
+		</div>
+		<div class="demo"></div>-->
 		
 	</body>
 	<script type="text/javascript" src="js/lib/jquery-1.10.1.min.js" ></script>
@@ -532,5 +562,7 @@
 //				}
 			});
 		});
+		//fixed头部随浏览器滚动条变化位置
 	</script>
+	
 </html>
