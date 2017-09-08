@@ -97,33 +97,43 @@ a{
 	background: #FFFFFF;
 	position: relative;
 	width: 20%;
-	height: 150px;
+	height: 160px;
 	overflow: auto;
 	border: 1px solid #EEEEEE;
-	margin-top: 2%;
+	margin-top: 1%;
+	padding: 10px;
 }
 .top .topNav .type table{
 	/*width: 100%;*/
-	width: 100%;
+	width: 98%;
 	height: 100%;
 	margin: 0 auto;
 }
 .top .topNav .type table td{
-	line-height: 14px;
-	padding: 0;
+	line-height: 2px;
+	padding-top: 0;
+}
+.top .topNav .type table a:hover{
+	color: #69A6D1;
+}
+.top .topNav .type table .frist{
+	border-right: 1px solid #ADADAD;
 }
 .top .topNav li:hover .type{
 	display: block;
 	position: absolute;
 	z-index: 99;
+	margin-top: -0.7%;
 }
+
 .top .topNav li:hover .qipao{
-	width: 14px;
+	/*width: 14px;*/
+	width: 13%;
 	height: 14px;
 	z-index: 999;
-	top: 82px;
+	top:10%;
 	margin-left: 16px;
-	position: absolute;
+	position: relative;
 	background: #FFFFFF;
 	/*border: 1px solid #EEEEEE;*/
 	border-width:1px;
@@ -150,10 +160,6 @@ a{
 }
 .container .zixun{
 	width: 21%;
-}
-.container .swiper-container .swiper-slide{
-	width: 100%;
-	height: 100%;
 }
 .container .swiper-container .swiper-slide{
 	width: 100%;
