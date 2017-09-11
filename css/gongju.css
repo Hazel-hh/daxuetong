@@ -1,5 +1,40 @@
+body{
+	background: #FAFAFA;
+}
 .imgSection .imgArea{
 	background: url(../img/gongju/imgArea.png);
 	width: 100%;
 	height: 220px;
+}
+.container{
+	width: 90%;
+}
+.container table{
+	width: 100%;
+}
+.container table .item{
+	background: #FFFFFF;
+	border-radius:2%;
+	box-shadow:0 0 3px 3px #EEEEEE;
+	min-height: 400px;
+	width: 100%;
+}
+.container table .item .itemTitle{
+	font-size: 16px;
+	margin-left: 2em;
+	display: inline-block;
+	height: 40px;
+	font-weight: bold;
+	margin-top: 1em;
+}
+.container table .item .itemInfo{
+	margin-left: 2em;
+	margin-top: 1em;
+	margin-right: 2em;
+}
+.container table .item .itemState{
+	font-size: 1.5em;
+	text-align: right;
+	margin-top: 1em;
+	margin-right: 1em;
 }
