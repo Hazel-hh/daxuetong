@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--日历-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>日历</title>
+		<style>
+			td {
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 12px;
+			}
+			.clendar{
+				width: 50%;
+			}
+			.clendar table{
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="clendar">
+			<table border="0" cellpadding="0" cellspacing="0" width="180">
+				<tr>
+					<td id="cc">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript">
+			//平年闰年的判断
+			function RunNian(The_Year){
+				if((The_Year%100 == 0) || ((The_Year%4 == 0) && (The_Year%100!= 0)))
+					return true;
+				else return false;
+			}
+			//计算年The_Year月The_Month的1号是星期几，比如，1997年3月1号是星期几
+			function GetWeekday(The_Year, The_Month) {
+				var Allday, y, i;
+				//计算星期的公式S=x-1+[(x-1)/4]-[(x-1)/100]+[(x-1)/400]+C
+				//x：公历的年，C：包含当天（此处是1号）在内的日期的天数，即当天是当年的第几天
+				y = The_Year - 1; //y:x-1
+				//先计算y+[y/4]-[y/100]+[y/400]+1，因为此处是1号，所以最后是加1，假如要计算5号，就是加5
+				Allday = y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) + 1;
+
+				//计算加C，其中，C已经在上述计算中包含了当天的日期 ：1，假如是5号，就已经包含了加5 
+				for(i = 1; i < The_Month; i++) {
+					switch(i) {
+						case 1:
+							Allday += 31;
+							break;
+						case 2:
+							if(RunNian(The_Year)) Allday += 29;
+							else Allday += 28;
+							break;
+						case 3:
+							Allday += 31;
+							break;
+						case 4:
+							Allday += 30;
+							break;
+						case 5:
+							Allday += 31;
+							break;
+						case 6:
+							Allday += 30;
+							break;
+						case 7:
+							Allday += 31;
+							break;
+						case 8:
+							Allday += 31;
+							break;
+						case 9:
+							Allday += 30;
+							break;
+						case 10:
+							Allday += 31;
+							break;
+						case 11:
+							Allday += 30;
+							break;
+						case 12:
+							Allday += 31;
+							break;
+					}
+				}
+				Allday = Allday % 7;
+				return Allday;
+			}
+			//在<div id="showdate"></div>中显示年月日
+			function chooseday(The_Year, The_Month, The_Day) {
+				var Firstday;
+				var completely_date;
+				if(The_Day != 0) completely_date = The_Year + "-" + The_Month + "-" + The_Day;
+				else completely_date = "No Choose";
+				//showdate 只是一个为了显示而采用的东西，（这是原文的注释）
+				//如果外部想引用这里的时间，可以通过使用 completely_date引用完整日期
+				//也可以通过The_Year,The_Month,The_Day分别引用年，月，日
+				//当进行月份和年份的选择时，认为没有选择完整的日期
+				document.getElementById("showdate").innerText = completely_date;
+				Firstday = GetWeekday(The_Year, The_Month);
+				ShowCalendar(The_Year, The_Month, The_Day, Firstday);
+			}
+
+			function nextmonth(The_Year, The_Month) //下一年
+			{
+				if(The_Month == 12) chooseday(The_Year + 1, 1, 0);
+				else chooseday(The_Year, The_Month + 1, 0);
+			}
+
+			function prevmonth(The_Year, The_Month) //上一年
+			{
+				if(The_Month == 1) chooseday(The_Year - 1, 12, 0);
+				else chooseday(The_Year, The_Month - 1, 0);
+			}
+
+			function prevyear(The_Year, The_Month) //上一月
+			{
+				chooseday(The_Year - 1, The_Month, 0);
+			}
+
+			function nextyear(The_Year, The_Month) //下一月
+			{
+				chooseday(The_Year + 1, The_Month, 0);
+			}
+			//显示日历
+			function ShowCalendar(The_Year, The_Month, The_Day, Firstday) {
+				var showstr;
+				var Month_Day;
+				var ShowMonth;
+				var today;
+				today = new Date();
+				switch(The_Month) {
+					case 1:
+						ShowMonth = "January";
+						Month_Day = 31;
+						break;
+					case 2:
+						ShowMonth = "February";
+						if(RunNian(The_Year)) Month_Day = 29;
+						else Month_Day = 28;
+						break;
+					case 3:
+						ShowMonth = "March";
+						Month_Day = 31;
+						break;
+					case 4:
+						ShowMonth = "April";
+						Month_Day = 30;
+						break;
+					case 5:
+						ShowMonth = "May";
+						Month_Day = 31;
+						break;
+					case 6:
+						ShowMonth = "June";
+						Month_Day = 30;
+						break;
+					case 7:
+						ShowMonth = "July";
+						Month_Day = 31;
+						break;
+					case 8:
+						ShowMonth = "August";
+						Month_Day = 31;
+						break;
+					case 9:
+						ShowMonth = "September";
+						Month_Day = 30;
+						break;
+					case 10:
+						ShowMonth = "October";
+						Month_Day = 31;
+						break;
+					case 11:
+						ShowMonth = "November";
+						Month_Day = 30;
+						break;
+					case 12:
+						ShowMonth = "December";
+						Month_Day = 31;
+						break;
+				}
+				showstr = "";
+				showstr = "<table cellpadding=0 cellspacing=0 border=1 bordercolor=#999999 width=95% align=center valign=top>";
+				showstr += "<tr><td width=0 style=´cursor:pointer;´ onclick=prevyear(" + The_Year + "," + The_Month + ")><<</td><td width=0> " + The_Year + " </td><td width=0 onclick=nextyear(" + The_Year + "," + The_Month + ") style=´cursor:pointer;´>>></td><td width=0 style=´cursor:pointer;´ onclick=prevmonth(" + The_Year + "," + The_Month + ")><<</td><td width=100 align=center>" + ShowMonth + "</td><td width=0 onclick=nextmonth(" + The_Year + "," + The_Month + ") style=´cursor:pointer;´>>></td></tr>";
+				showstr += "<tr><td align=center width=100% colspan=6>";
+				showstr += "<table cellpadding=0 cellspacing=0 border=1 bordercolor=#999999 width=100%>";
+				showstr += "<tr align=center bgcolor=#999999> ";
+				showstr += "<td><strong><font color=#0000CC>日</font></strong></td>";
+				showstr += "<td><strong><font color=#0000CC>一</font></strong></td>";
+				showstr += "<td><strong><font color=#0000CC>二</font></strong></td>";
+				showstr += "<td><strong><font color=#0000CC>三</font></strong></td>";
+				showstr += "<td><strong><font color=#0000CC>四</font></strong></td>";
+				showstr += "<td><strong><font color=#0000CC>五</font></strong></td>";
+				showstr += "<td><strong><font color=#0000CC>六</font></strong></td>";
+				showstr += "</tr><tr>";
+				for(i = 1; i <= Firstday; i++)
+					showstr += "<td align=center bgcolor=#CCCCCC> </td>";
+				for(i = 1; i <= Month_Day; i++) {
+					if((The_Year == today.getFullYear()) && (The_Month == today.getMonth() + 1) && (i == today.getDate())) bgColor = "#FFCCCC";
+					else bgColor = "#CCCCCC";
+
+					if(The_Day == i) bgColor = "#FFFFCC";
+					showstr += "<td align=center bgcolor=" + bgColor + " style=´cursor:pointer;´ onclick=chooseday(" + The_Year + "," + The_Month + "," + i + ")>" + i + "</td>";
+					Firstday = (Firstday + 1) % 7;
+					if((Firstday == 0) && (i != Month_Day)) showstr += "</tr><tr>";
+				}
+				if(Firstday != 0) {
+					for(i = Firstday; i < 7; i++)
+						showstr += "<td align=center bgcolor=#CCCCCC> </td>";
+					showstr += "</tr>";
+				}
+				showstr += "</tr></table></td></tr></table>";
+				document.getElementById("cc").innerHTML = showstr;
+			}
+			var The_Year, The_Day, The_Month;
+			var today;
+			var Firstday;
+			today = new Date();
+			The_Year = today.getFullYear();
+			The_Month = today.getMonth() + 1;
+			The_Day = today.getDate();
+			Firstday = GetWeekday(The_Year, The_Month);
+			ShowCalendar(The_Year, The_Month, The_Day, Firstday);
+		</script>
+		<div id="showdate"></div>
+	</body>
+
+</html>

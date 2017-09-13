@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS动画</title>
+		<style type="text/css">
+			/*旋转*/
+			.rotateImg,.scaleImg,.rotateAndScale,.translateImg{
+				transition: all .4s ease-in-out;
+				-webkit-transition: all .4s ease-in-out;/*firefox*/
+				-moz-transition: all border-left-color.4s ease-in-out;/*Safari 和 Chrome*/
+				-o-transition: all .4s ease-in-out;/*oprea*/
+			}
+			.rotateImg:hover{
+				transform: rotate(360deg);
+				-webkit-transform: rotate(360deg);
+				-moz-transform: rotate(360deg);
+				-o-transform: rotate(360deg);
+				-ms-transform: rotate(360deg);
+			}
+			/*缩放*/
+			.scaleImg:hover{
+				transform: scale(1.5);
+				-webkit-transform: scale(1.5);
+				-moz-transform: scale(1.5);
+				-o-transform: scale(1.5);
+				-ms-transform: scale(1.5);
+			}
+			/*旋转并放大*/
+			.rotateAndScale:hover{
+				transform: scale(1.5) rotate(360deg);
+				-webkit-transform: scale(1.5) rotate(360deg);
+				-moz-transform: scale(1.5) rotate(360deg);
+				-o-transform: scale(1.5) rotate(360deg);
+				-ms-transform: scale(1.5) rotate(360deg);
+			}
+			/*移动*/
+			.translateImg:hover{
+				transform:translate(0,10px);
+				-webkit-transform: translate(0,10px);
+				-moz-transform: translate(0,10px);
+				-o-transform: translate(0,10px);
+				-ms-transform: translate(0,10px);
+			}
+		</style>
+	</head>
+	<body>
+		旋转<br />
+		<img src="img/index/author1.jpg" class="rotateImg"/>
+		<br /><br />
+		放大<br />
+		<img src="img/index/author1.jpg" class="scaleImg"/>
+		<br /><br />
+		旋转并放大<br />
+		<img src="img/index/author1.jpg" class="rotateAndScale"/>
+		<br /><br />
+		移动<br />
+		<img src="img/index/author1.jpg" class="translateImg"/>
+	</body>
+</html>
