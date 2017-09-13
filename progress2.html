@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#myProgress {
+				/*border-radius: 6px;*/
+			}
+		</style>
+	</head>
+
+	<body>
+		<progress id="myProgress" value="" max="100"></progress>
+		<label id="processvalue"></label>
+		<input type="button" name="" value="再来一次" onclick="resetprocess();" />
+	</body>
+	<script type="text/javascript">
+//		var progress = document.getElementById("myProgress");
+//
+//		function upload(file, loaded, total) {
+//			var percent = Math.round(loaded / total * 100);
+//			progress.value = percent;
+//		}
+//		
+		
+		stepprocessbar();
+		// 进度条增长
+		function stepprocessbar() {　　
+			var pb = document.getElementById("myProgress");　　
+			pb.value = pb.value + 1;
+
+			　　 // 进度显示label
+			　　
+			var processlabel = document.getElementById("processvalue");　　
+			processlabel.innerText = pb.value + '%';　　
+			processlabel.textContent = pb.value + '%';; // FF 不支持innerText
+
+			　　
+			if(pb.value < 100) {　　　　
+				setTimeout(function() {　　　　　　
+					stepprocessbar();　　　　
+				}, 50)　　
+			}
+		}
+		// 重置进度条,再来一次
+		function resetprocess() {　　
+			var pb = document.getElementById("myProgress");　　
+			if(pb.value != 100) return;　　
+			document.getElementById("myProgress").value = 0;　　
+			stepprocessbar();
+		}
+	</script>
+
+</html>

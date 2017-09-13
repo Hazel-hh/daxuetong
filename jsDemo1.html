@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js学习（一）</title>
+	</head>
+	<body>
+		<!--2、对事件作出反应-->
+		<p>2、对事件作出反应</p>
+		<button type="button" onclick="alert('Welcome!')">点击事件</button>
+		<br />
+			
+		<!--3、改变HTML内容-->
+		<p>3、改变HTML内容</p>
+		<p id="changeContent">改变HTML内容</p>
+		<br />
+	
+		<!--4、改变img的内容-->
+		<p>4、改变img的内容</p>
+		<img src="img/index/author1.jpg" id="image" onclick="changeImg()">
+		<br />
+	
+		<!--5、改变HTML样式-->
+		<p>5、改变HTML样式</p>
+		<p id="changeStyle">改变样式</p>
+		<br />
+	
+		<!--6、验证输入-->
+		<input type="text" id="input" placeholder="请输入数字"/>
+		<input type="submit" value="提交" onclick="check()"/>
+		<br />
+		
+		
+		
+		
+		
+	</body>
+	<script src="js/lib/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//1、写入HTML输出
+		document.write('<h1>1、document.write输出到HTML</h1>');
+		
+		//3、改变HTML内容
+		var changeContent = document.getElementById('changeContent');
+		changeContent.innerHTML = '改变HTML后的内容';
+		
+		//4、改变图像的内容
+		function changeImg(){
+			img = document.getElementById('image');
+			if(img.src.match('author1')){
+				img.src='img/index/tjAuthor3.jpg';
+			} else {
+				img.src='img/index/author1.jpg';
+			}
+		}
+		
+		//5、改变HTML样式
+		var changeStyle = document.getElementById('changeStyle');
+		changeStyle.style.color='#007AFF';
+		
+		//6、验证输入
+		function check(){
+			var str = document.getElementById('input');
+			if (isNaN(str)){//验证必须为数字
+				alert("Not Numeric");
+			};
+		}
+		
+		//7、使用双波浪好将字符串转化为数字，并且取整
+		var str = "250.250";
+		document.write('<p>7、使用双波浪好将字符串转化为数字，并且取整</p>')
+		document.write('<p>'+(~~str)+'</p>')
+		
+		//8、解决jQuery ajax调用远程接口的跨域问题
+		//前提：接口必须允许远程调用
+		$.ajax({
+			type:'get',
+			url:'url',
+			//以下两行代码，解决跨域问题
+			xhrFields: {widthCredentials:true},
+			crossDomain:true,
+			success:function(data){
+				//do something
+			},
+			error:function(data) {
+				//do something
+			}
+		});
+		
+		//9、利用jQuery创建json数据
+		//第一步：创建一个对象
+		var order = {};
+		//第二步：往对象里面写值
+		order.status = 0;
+		order.name = "test";
+		order.arr = [];
+		order.arr.push({"id":1,"name":"inphone","img":"img/all/logo.png"});
+		order.arr.push({"id":2,"name":"inphone","img":"img/all/logo.png"});
+		//第三步：将对象转化为json数据
+		var jsonStr = JSON.stringify(order);
+		console.log(jsonStr);
+		
+		//10、字符串截取
+		var str = "abcdefg";
+		str.substring(str.length -1 ,str.length);
+		
+		//11、保留多位小数
+		var num = 10 /3;
+		console.log(~~(num*10000)/10000);//未四舍五入，并保留4位小数
+		console.log(Math.round(num*10000)/10000);//四舍五入,并保留4位小数
+		
+		//12、创建一个随机整数
+		//注意：Math.random()只能生成0-1之间的随机小数
+		//所以要生成100-500之间的随机数，如下：
+		//公式：~~(Math.random()*(MAX-MIN)+MIN);
+		var num = ~~(Math.random()*400+100);
+		console.log(num);
+	</script>
+</html>
