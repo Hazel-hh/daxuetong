@@ -16,18 +16,28 @@
 				height: 200px;
 				border: 1px solid #000000;
 				vertical-align: middle;
+				text-align: center;/*子元素水平居中*/
 			}
-			
+			/*伪元素撑开容器，使子元素垂直居中*/
+			.container::before{
+				height: 100%;
+				vertical-align: middle;
+				content: " ";
+  				display: inline-block;
+			}
 			.tab {
 				width: 80%;
-				margin: 0 auto;
+				/*以下两句是垂直居中的重点*/
+				display: inline-block;
+  				vertical-align: middle;
+  				/*以上两句是垂直居中的重点*/
+  				
 				border: 1px solid #ddd;
 				height: 40px;
 				text-align: center;
 				line-height: 40px;
 				background: #fff;
 				border-radius: 10px;
-				margin-top: 70px;
 				overflow: hidden;
 				padding: 0;
 			}
@@ -85,7 +95,7 @@
 			}
 			
 			.tab li:hover:before {
-				box-shadow: 0 0 0 100px #36bc99;
+				box-shadow: 0 0 0 100px #007AFF;
 			}
 			
 			/*竖线消失*/
@@ -93,6 +103,27 @@
 			.tab li:hover:after {
 				height: 0;
 				top: 20px;
+			}
+			
+			.nav{
+				width: 200px;
+				height: 50px;
+				border: 1px solid #007AFF;
+				text-align: center;
+				padding: 0;
+				margin: 0 auto;
+			}
+			.nav li{
+				margin: 0 auto;
+				display: inline-block;
+				width: 22%;
+				height: 50px;
+			}
+			.nav li a{
+				display: inline-block;
+				text-decoration: none;
+				line-height: 50px;
+				border: 1px solid #DDDDDD;				
 			}
 		</style>
 	</head>
@@ -114,6 +145,22 @@
 				</li>
 			</ul>
 		</div>
+		
+		<br />
+		<ul class="nav">
+				<li>
+					<a href="#">首页</a>
+				</li>
+				<li>
+					<a href="#">活动</a>
+				</li>
+				<li>
+					<a href="#">论坛</a>
+				</li>
+				<li>
+					<a href="#">分类</a>
+				</li>
+		</ul>
 	</body>
 
 </html>
