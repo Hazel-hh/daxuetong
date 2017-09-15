@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>移动端大转盘抽奖</title>
+		<style type="text/css">
+			.turntable{
+				width: 280px;
+				height: 280px;
+				margin: 0 auto;
+				position: relative;
+			}
+			.turntable .pointer{
+				position: absolute;
+				z-index: 3;
+				width: 90px;
+				height: 121.7px;
+				left: 95px;
+				bottom: 95px;
+				background: url(img/zhuanpan/pointer.jpg) center no-repeat;
+				background-size: contain;
+			}
+			.rotate{
+				width: 280px;
+				height: 280px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 2;
+				background: url(img/zhuanpan/back.jpg) center no-repeat;
+				background-size: contain;
+			}
+			.prize{
+				width: 84.5px;
+				height: 280px;
+				position: absolute;
+				top: 0;
+				left: 97.75px;
+				color: ###;
+				text-align: center;
+				
+			}
+			strong{
+				display: block;
+				margin-top: 44px;
+				font-size: 15px;
+			}
+			span{
+				display: block;
+				margin-top: 5px;
+				font-size: 9px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="turntable">
+			<div class="pointer"></div>
+			<div class="rotate" id="rotate">
+				<div class="prize prize_1">
+					<strong>苹果6s</strong>
+					<span>
+						手机一部
+					</span>
+				</div>
+				<div class="prize prize_2">
+					<strong>未中奖</strong>
+					<span>
+						谢谢参与
+					</span>
+				</div>
+				<div class="prize prize_3">
+					<strong>充电宝</strong>
+					<span>
+						1部
+					</span>
+				</div>
+				<div class="prize prize_4">
+					<strong>未中奖</strong>
+					<span>
+						谢谢参与
+					</span>
+				</div>
+				<div class="prize prize_5">
+					<strong>U盘</strong>
+					<span>
+						4G 1个
+					</span>
+				</div>
+				<div class="prize prize_6">
+					<strong>未中奖</strong>
+					<span>
+						谢谢参与
+					</span>
+				</div>
+				<div class="prize prize_7">
+					<strong>15元</strong>
+					<span>
+						手机话费
+					</span>
+				</div>
+				<div class="prize prize_8">
+					<strong>未中奖</strong>
+					<span>
+						谢谢参与
+					</span>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>
