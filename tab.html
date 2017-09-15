@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--
+	作者：hhc_mail@163.com
+	时间：2017-09-15
+	描述：灵活的Tab实现
+-->
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>灵活的Tab动画实现</title>
+		<style type="text/css">
+			.container {
+				width: 80%;
+				margin: 0 auto;
+				height: 200px;
+				border: 1px solid #000000;
+				vertical-align: middle;
+			}
+			
+			.tab {
+				width: 80%;
+				margin: 0 auto;
+				border: 1px solid #ddd;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				background: #fff;
+				border-radius: 10px;
+				margin-top: 70px;
+				overflow: hidden;
+				padding: 0;
+			}
+			
+			.tab li {
+				float: left;
+				width: 25%;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.tab li:before,
+			.tab li:after,
+			.tab li a {
+				-webkit-transition: all 0.5s ease-in-out;
+				transition: all 0.5s ease-in-out;
+				text-decoration: none;
+			}
+			
+			.tab li:before,
+			.tab li:after {
+				content: "";
+				display: block;
+			}
+			
+			/*竖线*/
+			.tab li:not(:first-child):after {
+				background: #ddd;
+				height: 20px;
+				width: 1px;
+				left: 0;
+				top: 10px;
+				position: absolute;
+			}
+			
+			.tab li a {
+				display: block;
+				position: relative;
+				z-index: 2;
+				color: #000;
+				font-size: 14px;
+			}
+			
+			.tab li:before {
+				width: 0;
+				height: 0;
+				top: 50%;
+				left: 50%;
+				z-index: 1;
+				position: absolute;
+			}
+			
+			.tab li:hover a {
+				color: #fff;
+			}
+			
+			.tab li:hover:before {
+				box-shadow: 0 0 0 100px #36bc99;
+			}
+			
+			/*竖线消失*/
+			.tab li:hover+li:after,
+			.tab li:hover:after {
+				height: 0;
+				top: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<ul class="tab">
+				<li>
+					<a href="#">首页</a>
+				</li>
+				<li>
+					<a href="#">活动</a>
+				</li>
+				<li>
+					<a href="#">论坛</a>
+				</li>
+				<li>
+					<a href="#">分类</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>
