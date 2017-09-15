@@ -115,5 +115,27 @@
 		//公式：~~(Math.random()*(MAX-MIN)+MIN);
 		var num = ~~(Math.random()*400+100);
 		console.log(num);
+		
+		
+		var str = "奴隶社会,非洲,古埃及文明,金字塔,亚洲,两河流域文明,汉谟拉比法典,,古印度,种姓制度,,,佛教的创立,欧洲,希腊,希腊城邦,,,雅典民主,,罗马,城邦,,,帝国的征服与扩展,,希腊罗马古典文化,建筑艺术,,,公历";
+		function str2json(str){
+			var arr1 = str.split(",,");
+			var order = {};
+			order.arr = [];
+			var jsonStr;
+			for(var i = 0; i < arr1.length; i++){
+				document.write(arr1[i]+"<br/>");
+				var arr2 = arr1[i].split(",");
+				for(var j = 0; j < arr2.length; j++){
+					order.arr.push(arr2[i]);
+					//第三步：将对象转化为json数据
+					jsonStr = JSON.stringify(order);
+				}
+			}
+			
+			console.log(jsonStr);
+		}
+		
+		str2json(str);
 	</script>
 </html>
