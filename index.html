@@ -27,7 +27,7 @@
 								<a href="#">分类浏览<span><i class="fa fa-angle-down"></i></span>
 								</a>
 								<div class="demo">							
-									<div class="disNone qipao"></div>
+									<span class="disNone qipao"></span>
 									<div class="disNone type">
 										
 										<table cellspacing="0" cellpadding="0">
@@ -296,7 +296,6 @@
 					</div>
 					<div class="quanziDownload">
 						<span><i class="fa fa-apple">&nbsp;ios版下载</i></span>
-
 						<span class="android"><i class="fa fa-android">&nbsp;android版下载</i></span>
 					</div>
 				</div><!--圈子end-->
@@ -582,20 +581,17 @@
 		<div id="" class="qipao">
 			这是气泡框demo
 		</div>
-		<div class="demo"></div>-->
+		<div class="demo"></div>-->		
 		
 		<!--回到顶部侧边栏-->
-		<!--侧边栏-->
-		<div class="slider">
-			<div class="back-top" id="back-top">
+		<div class="fixed-slider">
+			<div class="back-top disNone" id="back-top">
 				<span><i class="fa fa-arrow-up"></i></span>
 			</div>
 			<div class="back-end" id="back-end">
 				<span><i class="fa fa-arrow-down"></i></span>
 			</div>
 		</div>
-		
-		
 	</body>
 	<script type="text/javascript" src="js/lib/jquery-1.10.1.min.js" ></script>
 	<script type="text/javascript" src="js/lib/swiper-3.4.2.jquery.min.js" ></script>
@@ -631,39 +627,7 @@
 			});
 		});
 		
-		//获取整个文档高度
-		var body = document.body, html = document.documentElement;
-		var height = Math.max( body.scrollHeight, body.offsetHeight);
-		//或者
-		var height = $(document).height();
-		
-		//当前屏幕高度
-		var wheight = $(window).height();
-		
-		$('html,body').animate({
-			scrollTop:0
-		},'fast');//带动画
-		
-		
-		jQuery(document).ready(function($){
-			//回到顶部
-			$('#back-top').click(function(){
-				$('html,body').stop();
-				$('html,body').animate({
-					scrollTop:0
-				},1000);
-			});
-			
-			//回到底部
-			$('#back-end').click(function(){
-				$('html,body').stop();
-				$('html,body').animate({
-					scrollTop:$('#footer').offset().top
-				},1000);
-			});
-		});
-		
-		
+		//回到顶部/底部方法一
 		$(document).ready(function(){
 			
 			//回到顶部按钮的显示/隐藏代码			
@@ -671,24 +635,69 @@
 			$("#back-top").hide();
 			
 			//显示返回顶部按钮
-			$(function(){
+			$(function(){		
+				var height = $(document).height();//页面高度
+				var wheight = $(window).height();//窗口高度
+				
 				$(window).scroll(function(){
 					if ($(this).scrollTop() > 100){
 						$('#back-top').fadeIn();
 					} else {
-						$('back-top').fadeOut();
+						$('#back-top').fadeOut();
+					}			
+					if($(this).scrollTop() < height - wheight){
+						$('#back-end').fadeIn();
+					} else {
+						$('#back-end').fadeOut();
 					}
 				});
 				
 				//点击回到顶部
-				$('#back-top').click(function(){
+				$('#back-top').click(function(){					
 					$('body,html').animate({
 						scrollTop:0
 					},'fast');
 					return false;
+				});			
+				
+				//回到底部
+				$('#back-end').click(function(){
+					$('html,body').stop();
+					$('html,body').animate({
+						scrollTop:height
+					},'fast');
 				});
-			});			
-		});				
+			});					
+		});		
+		
+		//回到顶部方法二，纯JS实现
+//		window.onload = function() {
+//			var timer = null;
+//			var backTop = document.getElementById("back-top");
+//			var height = document.documentElement.clientHeight;
+//			//或者自定义设置高度
+//			var height = 150;
+//			
+//			window.onscroll = function(){
+//				if(document.body.scrollTop >= height){
+//					backTop.style.display = "block";
+//				} else {
+//					backTop.style.display = "none";
+//				}
+//			};
+//			
+//			backTop.addEventListener('click', function(){
+//				timer = setInterval(function(){
+//					var top = document.body.scrollTop;
+//					var speed = top / 5;
+//					document.body.scrollTop = top - speed;
+//					
+//					if(top == 0){
+//						clearInterval(timer);
+//					}
+//				},30);
+//			});
+//		};
 	</script>
 	
 </html>

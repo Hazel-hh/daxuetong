@@ -28,18 +28,23 @@ a{
 	display: none;
 }
 /*侧边栏*/
-.slider{
+.fixed-slider .back-top{
 	position: fixed; 
-	bottom:20px; 
+	bottom:9%; 
 	right: 1%;
-	z-index: 100; 
+	z-index: 9; 
 } 
-.slider span i{
+.fixed-slider .back-end{
+	position: fixed; 
+	bottom:2%; 
+	right: 1%;
+	z-index: 9; 
+} 
+.fixed-slider span i{
 	color: #ADADAD;
 	font-size: 20px;
-	border: 1px solid #ADADAD;
+	border: 2px solid #ADADAD;
 	padding: .4em;
-	margin-bottom: .4em;
 }
 			
 /*top*/
@@ -369,9 +374,9 @@ a{
 }
 .container .containerRight .quanzi .quanziDownload .android{
 	color: #69a6d1;
-	margin-left: 10%;	
+	margin-left: .4em;	
 	border-left: 1px solid #69a6d1;
-	padding-left: 10%;
+	padding-left: .4em;
 }
 
 /*containerRight 推荐作者*/
@@ -544,7 +549,6 @@ a{
     border-style: solid solid solid solid;
     border-color: #FFFFFF;
     left:46px; 
-    bottom:-83px;
     margin-top: 140px;
     display: inline-block;
 	transform: rotate(45deg);
@@ -556,10 +560,6 @@ a{
 	width: 50%;
 	padding-top: 14%;
 }
-
-
-
-
 
 /*圆形气泡框实现，在此例子上不显示*/
 /*.qipao{
