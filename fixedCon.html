@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div class="fixedCon disNone right">
+			<ul>
+				<li>
+					<a href="#"></a>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script>
+		window.onload = function() {
+			var $ = function(id) {
+				return document.getElementById(id);
+			}
+
+			var addEvent = function(obj, event, fn) {
+				if(obj.addEventListener) {
+					obj.addEventListener(event, fn, false);
+				} else if(obj.attachEvent) {
+					obj.attachEvent('on' + event, fn);
+				}
+			}
+
+			var domSider = $('sidebar');
+			addEvent(window, 'scroll', function() {
+				var sideHeight = domSider.offsetHeight;
+				var screenHeight = document.documentElement.clientHeight;
+				var scrollHeight = document.body.scrollTop;
+				if(scrollHeight + screenHeight > sideHeight) {
+					domSider.style.cssText = 'position:fixed;' +
+						'right:0px;top:' + (-(sideHeight - screenHeight)) + 'px';
+				} else {
+					domSider.style.position = 'static';
+				}
+			});
+
+		}
+	</script>
+
+</html>

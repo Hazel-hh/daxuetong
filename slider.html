@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>回到顶部/底部</title>
+		<style>
+			#back-top{
+				position: fixed; 
+				bottom:20px; 
+				right: 2%; 
+				z-index: 100; 
+			} 
+		</style>
+	</head>
+	<body>
+		<!--侧边栏-->
+		<div class="back-top">
+			<button class="styled-button">TOP</button>
+		</div>
+		<div class="back-end">
+			<button class="styled-button">TOP</button>
+		</div>
+		
+		<!--底部-->
+		<div id="footer"></div>
+	</body>
+	<script>
+		jQuery(document).ready(function($){
+			//回到顶部
+			$('#back-top').click(function(){
+				$('html,body').stop();
+				$('html,body').animate({
+					scrollTop:'0px'
+				},1000);
+			});
+			
+			//回到底部
+			$('#back-end').click(function(){
+				$('html,body').stop();
+				$('html,body').animate({
+					scrollTop:$('#footer').offset().top
+				},1000);
+			});
+		});
+		
+		//回到顶部按钮的显示/隐藏代码
+		$(document).ready(function(){
+			
+			//隐藏返回顶部按钮
+			$("#back-top").hide();
+			
+			//显示返回顶部按钮
+			$(function(){
+				$(window).scroll(function(){
+					if ($(this).scrollTop() > 100){
+						$('#back-top').fadeIn();
+					} else {
+						$('back-top').fadeOut();
+					}
+				});
+				
+				//点击回到顶部
+				$('#back-top').click(function(){
+					$('body,html').animate({
+						scrollTop:0
+					},'fast');
+					return false;
+				});
+			});
+		});
+	</script>
+</html>

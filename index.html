@@ -503,7 +503,7 @@
 		</section><!--link end-->
 		
 		<!--footer-->
-		<section class="footer">
+		<section class="footer" id="footer">
 			<div class="footerArea">
 				<div class="footerLeft">
 					<img src="img/all/footer-logo.png" alt="底部LOGO"/>
@@ -584,6 +584,18 @@
 		</div>
 		<div class="demo"></div>-->
 		
+		<!--回到顶部侧边栏-->
+		<!--侧边栏-->
+		<div class="slider">
+			<div class="back-top" id="back-top">
+				<span><i class="fa fa-arrow-up"></i></span>
+			</div>
+			<div class="back-end" id="back-end">
+				<span><i class="fa fa-arrow-down"></i></span>
+			</div>
+		</div>
+		
+		
 	</body>
 	<script type="text/javascript" src="js/lib/jquery-1.10.1.min.js" ></script>
 	<script type="text/javascript" src="js/lib/swiper-3.4.2.jquery.min.js" ></script>
@@ -618,7 +630,65 @@
 //				}
 			});
 		});
-		//fixed头部随浏览器滚动条变化位置
+		
+		//获取整个文档高度
+		var body = document.body, html = document.documentElement;
+		var height = Math.max( body.scrollHeight, body.offsetHeight);
+		//或者
+		var height = $(document).height();
+		
+		//当前屏幕高度
+		var wheight = $(window).height();
+		
+		$('html,body').animate({
+			scrollTop:0
+		},'fast');//带动画
+		
+		
+		jQuery(document).ready(function($){
+			//回到顶部
+			$('#back-top').click(function(){
+				$('html,body').stop();
+				$('html,body').animate({
+					scrollTop:0
+				},1000);
+			});
+			
+			//回到底部
+			$('#back-end').click(function(){
+				$('html,body').stop();
+				$('html,body').animate({
+					scrollTop:$('#footer').offset().top
+				},1000);
+			});
+		});
+		
+		
+		$(document).ready(function(){
+			
+			//回到顶部按钮的显示/隐藏代码			
+			//隐藏返回顶部按钮
+			$("#back-top").hide();
+			
+			//显示返回顶部按钮
+			$(function(){
+				$(window).scroll(function(){
+					if ($(this).scrollTop() > 100){
+						$('#back-top').fadeIn();
+					} else {
+						$('back-top').fadeOut();
+					}
+				});
+				
+				//点击回到顶部
+				$('#back-top').click(function(){
+					$('body,html').animate({
+						scrollTop:0
+					},'fast');
+					return false;
+				});
+			});			
+		});				
 	</script>
 	
 </html>
