@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS专业技巧</title>
+		<style>
+			.vertical-align{
+				width: 200px;
+				height: 200px;
+				outline: 1px solid #ADADAD;	/*利用outline代替border边框*/	
+				/*以下两行代码实现垂直居中*/	
+				align-items: center;
+				display: flex;
+			}
+			.vertical-align p{
+				margin: 0 auto;/*水平居中*/
+			}
+			ul{
+				width: 400px;
+				height: 40px;
+				/*以下两行代码实现垂直居中*/	
+				align-items: center;
+				display: flex;
+				
+				border: 1px solid #ADADAD;
+				border-radius: 40px;
+			}
+			ul.list li{
+				list-style: none;
+				display: inline-block;				
+			}
+			ul.list li:not(:last-child)::after{
+				content:"|";/*使用符号分隔列表*/
+				margin:0 1em 0 1em;
+			}
+		</style>
+	</head>
+	<body>
+		<!--垂直居中实现-->
+		<div class="vertical-align">
+			<p>垂直居中实现</p>
+		</div>
+		
+		<!--使用符号分隔列表-->
+		<ul class="list">
+			<li>首页</li>
+			<li>活动</li>
+			<li>分类浏览</li>
+			<li>论坛</li>
+			<li>考研</li>
+		</ul>
+		
+		<!--使用max-height实现纯CSS幻灯片-->
+	</body>
+</html>
