@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery实现模糊查询</title>
+	</head>
+	<body>
+		<table border="" cellspacing="" cellpadding="" id="table">
+			<tr>
+				<th>学号</th>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>年龄</th>
+			</tr>
+			<tr>
+				<td>2014213840</td>
+				<td>张三</td>
+				<td>男</td>
+				<td>20</td>
+			</tr>
+			<tr>
+				<td>2014213841</td>
+				<td>李四</td>
+				<td>男</td>
+				<td>20</td>
+			</tr>
+			<tr>
+				<td>2014213842</td>
+				<td>王三</td>
+				<td>女</td>
+				<td>30</td>
+			</tr>
+		</table>
+		<input type="text" name="" id="input" value="" />
+		<input type="button" name="" id="search" value="搜索" />
+	</body>
+	<script type="text/javascript" src="js/lib/jquery-1.10.1.min.js" ></script>
+	<script type="text/javascript">
+		
+		var text = "";
+		//实时筛选，不用点击按钮
+		setInterval(function(){
+			text = $('#input').val();//获取文本框输入
+			if($.trim(text) != ""){
+					$("#table tr:not('#theader')").hide().filter(":contains('"+text+"')").show();
+			}else{
+				$('#table tr').show();
+			}
+		},2000);
+		
+		/*
+		 * 通过点击按钮开始筛选
+		$(function(){
+			$('#search').click(function(){
+				var text = $('#input').val();//获取文本框输入
+				if($.trim(text) != ""){
+					$("#table tr:not('#theader')").hide().filter(":contains('"+text+"')").show();
+				}
+			})
+		});*/
+	</script>
+</html>
