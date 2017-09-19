@@ -2,10 +2,25 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>jquery实现模糊查询</title>
+		<title>jquery实现模糊查询(两种方法)</title>
+		<style type="text/css">
+			table{
+				width: 400px;
+				margin: 0 auto;
+			}
+			table tr{
+				width: 400px;
+				height: 40px;
+				text-align: center;
+			}
+			input{
+				margin-left: 44%;
+				margin-top: 20px;
+			}
+		</style>
 	</head>
 	<body>
-		<table border="" cellspacing="" cellpadding="" id="table">
+		<table border="1" cellspacing="0" cellpadding="0" id="table">
 			<tr>
 				<th>学号</th>
 				<th>姓名</th>
@@ -31,8 +46,8 @@
 				<td>30</td>
 			</tr>
 		</table>
-		<input type="text" name="" id="input" value="" />
-		<input type="button" name="" id="search" value="搜索" />
+		<input type="text" name="" id="input" value="" placeholder="请输入查询关键字"/>
+		<!--<input type="button" name="" id="search" value="搜索" />-->
 	</body>
 	<script type="text/javascript" src="js/lib/jquery-1.10.1.min.js" ></script>
 	<script type="text/javascript">
@@ -44,19 +59,18 @@
 			if($.trim(text) != ""){
 					$("#table tr:not('#theader')").hide().filter(":contains('"+text+"')").show();
 			}else{
-				$('#table tr').show();
+				$('#table tr').show();//当删除文本框的内容时，又重新显示表格所有内容
 			}
-		},2000);
+		},100);
 		
-		/*
-		 * 通过点击按钮开始筛选
-		$(function(){
-			$('#search').click(function(){
-				var text = $('#input').val();//获取文本框输入
-				if($.trim(text) != ""){
-					$("#table tr:not('#theader')").hide().filter(":contains('"+text+"')").show();
-				}
-			})
-		});*/
+//		// 通过点击按钮开始筛选
+//		$(function(){
+//			$('#search').click(function(){
+//				var text = $('#input').val();//获取文本框输入
+//				if($.trim(text) != ""){
+//					$("#table tr:not('#theader')").hide().filter(":contains('"+text+"')").show();
+//				}
+//			})
+//		});
 	</script>
 </html>
