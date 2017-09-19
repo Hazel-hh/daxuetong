@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery制作精美的下拉框</title>
+		<style type="text/css">
+			.disNone{
+				display: none;
+			}
+			.fengselect{
+				position: relative;
+				width: 130px;
+			}
+			#sex{
+				height: 16px;
+				padding: 8px;
+				border: 1px solid #ddd;
+				border-radius: 3px;
+				outline: none;
+				width: 112px;
+			}
+			.fengselect ul{
+				position: absolute;
+				left: 0;
+				top: 30px;
+				width: 118px;
+				padding: 5px;
+				border: 1px solid #ddd;
+				border-radius: 3px;
+				background: #FAFAFA;
+			}
+			.fengselect ul li{
+				list-style: none;
+				cursor: pointer;
+			}
+			.fengselect ul li:not(:last-child){
+				border-bottom: 1px solid #ddd;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="select-form">
+			<form action="" method="post">
+				<label class="fengselect">
+					<input type="text" value="" name="sex" placeholder="请选择" id="sex">
+					<ul class="disNone">
+						<li data-value="1">参数1</li>
+						<li data-value="2">参数2</li>
+						<li data-value="2">参数3</li>
+					</ul>					
+				</label>
+				<input type="submit" name="" id="" value="确认" />
+			</form>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/lib/jquery-1.10.1.min.js" ></script>
+	<script type="text/javascript">
+		$(function(){
+			var FengSelect = $(".fengselect");
+			FengSelect.each(function(){
+				var t = $(this),
+					inp = t.find('#sex'),
+					optBox = t.find('ul'),
+					opt = t.find('li');
+				inp.attr('readonly','readonly');
+//				optBox.hide();
+				t.hover(function(){
+					optBox.stop().slideDown();
+				}, function() {
+					optBox.stop().slideUp();
+				});
+				t.on("click","li",function(){
+					var value = $(this).data('value');
+					inp.val(value);
+				})
+			});
+		})
+	</script>
+</html>
