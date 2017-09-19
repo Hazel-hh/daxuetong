@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery滚动公告实现</title>
+		<style type="text/css">
+			.notice{
+				height: 20px;
+				background: #eee;
+				overflow: hidden;
+			}
+			ul{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+				height: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="notice">
+			<ul>
+				<li>公告一</li>
+				<li>公告二</li>
+				<li>公告三</li>
+				<li>公告四</li>
+				<li>公告五</li>
+			</ul>
+		</div>		
+	</body>
+	<script type="text/javascript" src="js/lib/jquery-1.10.1.min.js" ></script>
+	<script type="text/javascript">
+		setInterval(function(){
+			var newList = $("ul>:first");
+			newList.appendTo($("ul"));
+		},2000);
+	</script>
+</html>
