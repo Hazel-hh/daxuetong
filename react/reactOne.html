@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>react实例学习(一)——组件渲染</title>
+	</head>
+	<body>
+		<div id="demo1"></div>
+		<div id="demo2"></div>
+		<div id="demo3"></div>
+		<div id="demo4"></div>
+		<div id="demo5"></div>
+	</body>
+</html>
+<script type="text/javascript" src="../build/react-0.14.0.js" ></script>
+<script type="text/javascript" src="../build/react-dom-0.14.0.js" ></script>
+<script type="text/javascript" src="../build/browser.min.js" ></script>
+<script type="text/babel">
+	//demo1——渲染组件
+	ReactDOM.render(
+		//组件
+		<h1> hello world——demo1</h1>, 
+		document.getElementById('demo1')//要渲染到的DOM位置
+	); 
+	
+	////////////////////////////////////////////////////////////////////////
+	//demo2——生成一个新的组件
+	var Greet = React.createClass({
+		render:function(){
+			//变量用{}包括
+			return <h1>Hello {this.props.name}</h1>
+		}
+	});	
+	//渲染到DOM位置
+	ReactDOM.render(
+		//生成的自定义组件
+		<Greet name="hhc——demo2" />,	
+		//渲染组件到DOM位置
+		document.getElementById('demo2')
+	);
+	
+	///////////////////////////////////////////////////////////////////////
+	//demo3——组件触发事件
+	var InputState = React.createClass({
+		getInitialState:function(){//组件的初始state
+			return {enable:false};
+		},
+		handleClick:function(){//触发该方法会做的事情
+			this.setState({enable:!this.state.enable});
+		},
+		render:function(){//渲染
+			return (
+				<p>
+					<input type="text" disable={this.state.enable} />
+					<button onClick={this.handleClick}>Chage State</button>
+				</p>
+			);
+		}
+	});
+	ReactDOM.render(
+		<InputState />,
+		document.getElementById('demo3')
+	);
+	
+	//////////////////////////////////////////////////////////////////////////
+	//demo4
+	var Hello = React.createClass({
+		getInitialState:function(){
+			return {
+				opacity:1.0
+			};
+		},
+		
+		componentDidMount:function(){//组件状态插入完成后触发该函数
+			this.timer = setInterval(function(){//该组件的timer属性
+				var opacity = this.state.opacity;
+				opacity -= 0.5;
+				if(opacity < 0.1) {
+					opacity = 1.0;
+				}
+				this.setState({
+					opacity:opacity
+				});
+			}.bind(this),100);//每隔100毫秒要做以上的事情
+		},
+		render:function(){
+			return (
+				//将组件的opacity赋值给div的css
+				<div style={{opacity:this.state.opacity}}>
+				
+					Hello {this.props.name} ——demo4
+				</div>
+			);
+		}
+	});
+	ReactDOM.render(
+		<Hello name="world" />,
+		document.getElementById('demo4')
+	)
+	
+	///////////////////////////////////////////////////////////////////////////
+	//demo5——演示不同组件的嵌套，Page组件中嵌套了Search
+	var Search = React.createClass({
+		render:function() {
+			return (
+				<div>
+					{this.props.searchType}:<input type="text" />
+					<button>Search</button>
+				</div>
+			);
+		}
+	});
+	var Page = React.createClass({
+		render:function(){
+			return (
+				<div>
+					<h1>Welcome!——demo5</h1>
+					<Search searchType="Title" />
+					<Search searchType="Content" />
+				</div>
+			);
+		}
+	});
+	ReactDOM.render(
+		<Page />,
+		document.getElementById('demo5')
+	);
+</script>
