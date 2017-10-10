@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>大富翁——前端实现</title>
+		<style type="text/css">
+			.game{
+				width: 400px;
+				height: 400px;
+				border: 1px solid #3F3F3F;
+				margin: 0 auto;
+				margin-top: 40px;
+			}
+			.gameimg{
+				width: 100%;
+				height: 400px
+			}
+			.gameimg img{
+				width: 100%;
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="game">
+			<div class="gameimg">
+				<!--棋子-->
+				<div id="pieces" class="pager-0">
+					<img src="images/pieces.png"  alt="背景图片"/>
+				</div>
+			</div>
+			
+			<div class="play">
+				<!--骰子-->
+				<div class="dice">
+					<img src="images/dice.png" class="dicelo2" id="dice" alt="骰子"/>
+				</div>
+				<!--游戏次数-->
+				<div class="playnum">
+					<p>您今天还有<span class="" id="pn">0</span>次机会</p>
+				</div>
+				<!--游戏按钮-->
+				<div class="" id="playbtn">
+					<img src="iamges/btn_start_gray" alt="游戏按钮"/>
+				</div>
+			</div>
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			/*操作骰子的执行函数
+			@method play_dice
+			@param {int} dice_num [骰子数字]
+			@param {int} next_step [到达位置]
+			*/
+			function paly_dice (dice_num, next-step){
+				var _stop = dice_num;
+				_pande = next_step;
+				diceroll($('#dice'), _stop, _pande);
+			}
+			//摇动骰子的动画函数
+			//@method diceroll
+			//@param {object} dice [骰子对象]
+			//@paran {int} num [摇动的结果]
+			//@param {int} _pande [棋子停下的位置]
+			function diceroll(dice, num, _pande) {
+				var i = 0,
+				b = 0,
+				a = function(i){
+					b = setTimeout(function(){
+						dice.removeClass().addClass('dicelo' + (i % 3 + 7));//清除上次动画后的点数
+						i++;
+						if(i > 5){
+							//这里的dicelo9是骰子最后一幅动画的类名，删除后依次添加dicelo7，dicelo8
+							dice.removeClass('dicelo9').addClass('dicelo' + num);
+							var j = $('#pieces').attr('class').substr(1) || 1,
+							n = j + _pande;
+							var oldstep = _pande-num-1;
+							person.step = num;
+							run(person, true);//1右,2下,3左，4上
+							clearTimeout(b);
+							i = 0;
+						} else {
+							a(i);
+						}
+					},200);
+				};
+				a(i);
+			}
+			
+			//控制棋子的移动和棋盘坐标的转换
+			//@method run
+			//@param {object} person [棋子移动的坐标]
+			//@param {Boolean} isAn [棋子是否需要移动]
+			//@return {object} [棋子移动的坐标]
+			function run(person, isAn){
+				var _start = person.start,
+				_step = person.step,
+				_de = person.de;
+				
+				//棋子移动过程的坐标集合
+				gemeList = new Array();
+				for(var i = 1; i <= _step; i++){
+					if(_de == 1){//棋子向右移动
+						_start[0] += 1;
+						if (_start[0] == 5){
+							_de = 2;
+						}
+					} else if(_de == 2){
+						//棋子向下移动
+						_start[1] += 1;
+						if(_start[1] == 4){
+							_de = 3;
+						}
+					} else if(_de == 3){
+						//棋子向左移动
+						_start[0] += -1;
+						if(_start[0] == 0){
+							_de = 4;
+						}
+					} else if(_de == 4){
+						//棋子向上移动
+						_start[1] += -1;
+						if(_start[1] == 0){
+							_de = 1;
+						}
+					}
+					//将移动后的结果保存在集合里
+					gameList.push([_start[0], _start[1]]);
+				}
+				//当需要棋子移动时执行
+				if(isAn){
+					var j = 0,
+					d = 0,
+					c = function(j){
+						d = setTimeout(function(){
+							$('#pieces').attr('class', null).addClass('p'+gameList[0][0] + '-' + gameList[0][1]);
+							gameList.shift(0);
+							j++;
+							if (gameList.length == 0){
+								//棋子移动结束，并弹出相应的结果
+								returndice(_start);
+								clearTimeout(d);
+							} else{
+								c(j);
+							}
+						}, 500);
+					};
+					c(j);
+				}
+				person.start = _start;
+				person.step = 0;
+				person.de = _de;
+				return person;
+			}
+		</script>
+	</body>
+</html>

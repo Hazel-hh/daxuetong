@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>人员管理系统实现</title>
+		<script type="text/javascript" src="../build/react-0.14.0.js" ></script>
+		<script type="text/javascript" src="../build/react-dom-0.14.0.js" ></script>
+		<script type="text/javascript" src="../build/browser.min.js" ></script>
+	</head>
+	<body>
+		<div id="container"></div>
+	</body>
+</html>
+<script type="text/babel">
+	//staffHeader——提供搜索框、筛选下拉菜单、排序下拉菜单
+	var StaffHeader = React.createClass({
+		handleChange:function(){
+			this.props.onUserInput(
+				this.refs.filterTextInput.value,
+				this.refs.idSelect.value,
+				this.refs.orderSelect.value
+			);
+;		},
+		render:function(){
+			return (
+				<div>
+					<h3 style={{'textAlign':'center'}}>人员管理系统</h3>
+					<table className='optHeader'>
+						<tbody>
+							<tr>
+								<td className="headerTd" >
+									<input type="text" placeholder="Search..." ref='filterTextInput' value={this.props.filterTextInput} onChange={this.handleChange}/>
+								</td>
+								<td className='headerId'>
+									<label htmlFor='idSelect'>人员筛选</label>
+									<select id='idSelect' ref='idSelect' value={this.props.idSelect} onChange={this.handleChange}>
+										<option value='0'>全部</option>
+										<option value='1'>主任</option>
+										<option value='2'>老师</option>
+										<option value='3'>学生</option>
+										<option value='4'>实习</option>
+									</select>
+								</td>
+								<td>
+									<label htmlFor='orderSelect'>排序方式</label>
+									<select id='orderSelect' ref='orderSelect' value={this.props.orderSelect} onChange={this.handleChange}>
+										<option value='0'>身份</option>
+										<option value='1'>年龄升</option>
+										<option value='2'>年龄降</option>
+									</select>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			);
+		}
+	});
+	//人员具体信息组件
+	var StaffRow = React.createClass({
+		render:function(){
+			return (
+				<tr style={{'cursor':'pointer'}}>
+					<td>{this.props.staff.name}</td>
+					<td>{this.props.staff.age}</td>
+					<td>{this.props.staff.id}</td>
+					<td>{this.props.staff.sex}</td>
+					<td>
+						<a className='operateBtn'>删除</a>
+						<a className='operateBtn'>详情</a>
+					</td>
+				</tr>
+			)
+		}
+	});
+	
+	//人员信息表格
+	var StaffTable = React.createClass({
+		render:function(){
+			var rows = [];
+			if(this.props.staffs.length == 0){
+				rows.push(
+					<tr>
+						<th colspan='5'>暂无数据</th>
+					</tr>
+				);
+			} else {
+				this.props.staffs.forEach( function(staff){
+					if(this.props.idSelect == '0'){
+						if(staff.name.indexOf(this.props.filterText) === -1){
+							return ;
+						}	
+					}
+					if(this.props.idSelect == '1'){
+						if(staff.id.indexOf('主任') === -1){
+							return ;
+						}
+					}
+					if(this.props.idSelect == '2'){
+						if(staff.id.indexOf('老师') === -1){
+							return ;
+						}
+					}
+					if(this.props.idSelect == '3'){
+						if(staff.id.indexOf('学生') === -1){
+							return ;
+						}
+					}
+					if(this.props.idSelect == '4'){
+						if(staff.id.indexOf('实习') === -1){
+							return ;
+						}
+					}
+									
+					
+					rows.push(
+						<StaffRow key={staff.name} staff={staff} />
+					)
+					
+				}.bind(this));
+			}
+			
+			return (
+				<table className='rowPanel'>
+					<thead>
+						<th>姓名</th>
+						<th>年龄</th>
+						<th>身份</th>
+						<th>性别</th>
+						<th>操作</th>
+					</thead>
+					<tbody>{rows}</tbody>						
+				</table>
+			);
+		}
+	});
+	
+	//新增staff
+	var StaffAdd = React.createClass({
+		render:function(){
+			return (
+				<div >
+					<h3 >人员新增</h3>
+					<form className='addForm' >
+						<label htmlFor='inputName'>姓名</label><br/>
+						<input type='text' className='input' value='' ref='inputName' /><br/>
+						<label htmlFor='inputAge'>年龄</label><br/>
+						<input type='text' className='input' value='' ref='inputAge' /><br/>
+						<label htmlFor='inputSex'>性别</label><br/>
+						<input type='text' className='input' value='' ref='inputSex' /><br/>
+						<label htmlFor='inputId'>身份</label><br/>
+						<input type='text' className='input' value='' ref='inputId' /><br/>
+						<label htmlFor='inputDescript'>个人描述</label><br/>
+						<input type='text' className='input' value='' ref='inputDescript' /><br/><br/>
+						
+						<input type='submit' className='btn' value='新增人员' ref='' />
+						<input type='reset' className='btn' value='取消' ref='' />
+					</form>
+				</div>
+			);
+		}
+	});
+	
+	//最外层组件
+	var App = React.createClass({
+		//step1:添加getInitialState()方法来初始化state
+		getInitialState:function(){
+			return{
+				filterText:'',
+				idSelect:'0',
+				orderSelect:'0'
+			};
+		},
+		//step3:回调，根据SearchBar组件传过来的两个参数用setState来改变state的值，接下来重新进行业务逻辑处理并渲染
+		handleUserInput:function(filterText, idSelect,orderSelect){
+			this.setState({
+				filterText:filterText,
+				idSelect:idSelect,
+				orderSelect:orderSelect
+			});
+		},
+		render:function(){
+			return (
+				<div>
+					<StaffHeader 
+						//step2:将state传递给props
+						filterText = {this.state.filterText}
+						idSelect = {this.state.idSelect}
+						orderState = {this.state.orderState}
+						onUserInput = {this.handleUserInput}
+					/>
+					<StaffTable 
+						staffs={this.props.staffs}
+						filterText = {this.state.filterText}
+						idSelect = {this.state.idSelect}
+						orderState = {this.state.orderState}
+					/>
+					<StaffAdd />
+				</div>
+			);
+		}
+	});
+	//具体数据
+	var STAFFS = [
+		{descrip:'我是一匹来自远方的狼。', sex: '男', age: 20, name: '张三', id: '主任'},
+		{descrip:'我是一匹来自远方的狼。', sex: '女', age: 21, name: '李四', id: '老师'},
+		{descrip:'我是一匹来自远方的兔。', sex: '男', age: 18, name: '王五', id: '学生'},
+		{descrip:'我是一匹来自远方的狗。', sex: '男', age: 24, name: '找死', id: '主任'},
+		{descrip:'我是一匹来自远方的猪。', sex: '女', age: 20, name: '小刘', id: '老师'},
+		{descrip:'我是一匹来自远方的鼠。', sex: '男', age: 90, name: '老虎', id: '实习'},
+		{descrip:'我是一匹来自远方的狼。', sex: '男', age: 19, name: '网二', id: '实习'},
+	];
+	
+	ReactDOM.render(
+		<App staffs = {STAFFS}/>,
+		document.getElementById('container')
+	);
+</script>

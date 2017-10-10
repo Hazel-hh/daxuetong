@@ -33,7 +33,10 @@
 		render:function(){
 			var rows = [];
 			this.props.products.forEach(function(product){
-				//state传递给props偶，根据这些state来进行业务逻辑控制
+				//state传递给props，根据这些state来进行业务逻辑控制
+				if(product.name.indexOf(this.props.filterText) === -1){
+					return ;
+				}
 				rows.push(<ProductRow product={product} key={product.name} />)
 			}.bind(this));
 			return (
@@ -58,10 +61,8 @@
 			);
 		},
 		render:function(){
-			return(
-				<form>
-					<input type="text" placeholder="搜索商品" value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange}/>
-				</form>
+			return(			
+				<input type="text" placeholder="搜索商品" value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange}/>
 			);
 		}
 	});
@@ -87,7 +88,7 @@
 					/>
 					<ProductTable
 						products={this.props.products}
-						fiterText = {this.props.filterText}
+						fiterText = {this.state.filterText}
 					/>
 				</div>
 			);
