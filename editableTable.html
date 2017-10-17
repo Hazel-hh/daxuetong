@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery实现表格的增删改查</title>
+		<style type="text/css">
+			#table {
+				border-collapse: collapse;
+				width: 800px;
+				margin: auto;
+				text-align: center;
+			}
+			
+			#table td,
+			#table th {
+				border: 1px solid #000000;
+				height: 40px;
+				padding: 0;
+			}
+			
+			.disNone {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<table id="table">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>姓名</th>
+					<th>年龄</th>
+					<th>性别</th>
+					<th>毕业院校</th>
+					<th>操作</th>
+				</tr>
+				<tr>
+					<td colspan="6">test</td>
+				</tr>
+			</thead>
+		</table>
+		<!--查看层-->
+		<div class="disNone popDiv">
+			<p><strong>姓名：</strong><span></span></p>
+			<p><strong>年龄：</strong><span></span></p>
+			<p><strong>性别：</strong><span></span></p>
+			<p><strong>毕业院校：</strong><span></span></p>
+			<a href="#" id="close">关闭</a>
+		</div>
+		<!--修改层-->
+		<div class="modifyDiv disNone">
+			<form action="" method="post">
+				<p><strong>姓名：</strong><input type="text" /></p>
+				<p><strong>年龄：</strong><input type="text" /></p>
+				<p><strong>性别：</strong><input type="text" /></p>
+				<p><strong>毕业院校：</strong><input type="text" /></p>
+				<input type="submit" name="" id="" value="修改" />
+				<input type="reset" name="" id="" value="取消" />
+			</form>
+		</div>
+
+		<script type="text/javascript" src="js/lib/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				//从json数据中读出到表格
+				$(function() {
+					var tbody = "";
+					var data = [{
+							"name": "张三",
+							"age": 18,
+							"gender": "女",
+							"graduate": "杭师大"
+						},
+						{
+							"name": "张三",
+							"age": 18,
+							"gender": "女",
+							"graduate": "杭师大"
+						},
+						{
+							"name": "张三",
+							"age": 18,
+							"gender": "女",
+							"graduate": "杭师大"
+						},
+						{
+							"name": "张三",
+							"age": 18,
+							"gender": "女",
+							"graduate": "杭师大"
+						},
+						{
+							"name": "张三",
+							"age": 18,
+							"gender": "女",
+							"graduate": "杭师大"
+						},
+						{
+							"name": "张三",
+							"age": 18,
+							"gender": "女",
+							"graduate": "杭师大"
+						},
+						{
+							"name": "张三",
+							"age": 18,
+							"gender": "女",
+							"graduate": "杭师大"
+						}
+					];
+					//循环读出数据并添加到tbody中
+					$.each(data, function(i, value) {
+						var trs = "";
+						trs += "<tr><td>" +
+							(i + 1) + "</td><td>" +
+							value.name + "</td><td>" +
+							value.age + "</td><td>" +
+							value.gender + "</td><td>" +
+							value.graduate + "</td><td>" +
+							"<a href='#' id='deleteBtn'>删除</a>&nbsp;<a id='viewBtn' href='javascript:;'>查看</a></tr>"
+						tbody += trs;
+					});
+					//将tbody添加到table中
+					$("#table").append(tbody);
+				});
+			});
+			$("#tab").find("tr:not(:first)").each(function() {
+				$(this).children().eq("0").addClass("xuhao");
+				$(this).children().eq("1").addClass("name");
+				$(this).children().eq("2").addClass("age");
+				$(this).children().eq("3").addClass("gender");
+				$(this).children().eq("4").addClass("graduate");
+			}); //为每个对应的列添加class名
+
+			//查看
+			$("table").on('click', '#viewBtn', function() {
+				var width = $(document).width();
+				var height = $(document).height();
+
+				//添加遮罩层到body
+				$("<div class='mask'></div>").appendTo($("body"));
+				//遮罩层样式
+				$("div.mask").css({
+					"opacity": 0.2,
+					"background": '#000',
+					"width": width,
+					"height": height,
+					"position": "absolute",
+					"top": 0,
+					"left": 0
+				})
+				var arr = [];
+				$(this).parent().siblings().each(function() {
+					arr.push($(this).text());
+				});
+				$("#popDiv").show().children().each(function(i) {
+					$(this).children("span").text(arr[i]);
+				});
+				//关闭
+				$("#close").click(function() {
+					$(this).parent().hide();
+					$("div.mask").remove();
+				});
+			});
+			//删除
+			$("table").on('click', '#deleteBtn', function() {
+				$(this).parent("tr").remove();
+			});
+			//			$("#deleteBtn").click(function(){
+			//				alert("ok");
+			//				$(this).parent("tr").remove();
+			//			});
+
+			//在页面装载时，让所有的td都拥有点击事件
+			//			$(function() {
+			//				$("table").on('dblclick', 'td', function() {
+			//					//td中已经有了input,则不需要响应点击事件
+			//					if($(this).children("input").length > 0)
+			//						return false;
+			//					var tdObj = $(this);
+			//					var preText = tdObj.html();
+			//					//得到当前文本内容
+			//					var inputObj = $("<input type='text' />");
+			//					//创建一个文本框元素
+			//					tdObj.html(""); //清空td中的所有元素
+			//					inputObj
+			//						.width(tdObj.width())
+			//						//设置文本框宽度与td相同
+			//						.height(tdObj.height())
+			//						.css({
+			//							border: "0px",
+			//							fontSize: "17px",
+			//							font: "宋体"
+			//						})
+			//						.val(preText)
+			//						.appendTo(tdObj)
+			//						//把创建的文本框插入到tdObj子节点的最后
+			//						.trigger("focus")
+			//						//用trigger方法触发事件
+			//						.trigger("select");
+			//					inputObj.keyup(function(event) {
+			//						if(13 == event.which)
+			//						//用户按下回车
+			//						{
+			//							var text = $(this).val();
+			//							tdObj.html(text);
+			//						} else if(27 == event.which)
+			//						//ESC键
+			//						{
+			//							tdObj.html(preText);
+			//						}
+			//					});
+			//					//已进入编辑状态后，不再处理click事件
+			//					inputObj.dblclick(function() {
+			//						return false;
+			//					});
+			//				});
+			//			});
+			
+			$("table").on('click', 'td', function a() {
+				var inputSize = $(this).find("input").size();
+				if(inputSize > 0) return;
+				var tdText = $(this).text();
+				var inputObj = $('<input type="text" autofocus/>');
+				$(this).empty().append(inputObj);
+				inputObj.val(tdText); //给td绑定单击事件，当点击时增加<input/>
+				
+				var inputWidth = $(this).parent().width();
+				var inputHeight = $(this).parent().height();
+				console.log(inputWidth);
+				console.log(inputHeight);
+				
+				$("#table").find("input").css({
+					"width":inputWidth,
+					"height":inputHeight,
+					"margin":0,
+					"position":"absolute",
+					"margin-top":"-20px",
+					"margin-left":"-20px"
+				})
+				$("#table").find("input").blur(function() {
+					var inputText = $(this).val();
+					$(this).parent().html(inputText);
+					$(this).click(a);
+				}); //当input失去焦点时，变量inputText保存当前值，清空当前父元素的内容并填充文本，在给当前td重新拥有点击事件        
+
+			});
+		</script>
+	</body>
+
+</html>

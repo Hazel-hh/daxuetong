@@ -1,0 +1,251 @@
+/*common*/
+body{
+	max-width: 640px;
+	margin: 0 auto;
+	min-width: 320px;
+	font-size: 14px;
+	font-family: "Microsoft YaHei","sans-serif";
+	color: #333;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+.red{
+	color: red;
+}
+a{
+	color: #000;
+	text-decoration: none;
+}
+li{
+	list-style: none;
+	display: inline-block;
+}
+.fl{
+	float: left;
+	overflow: hidden;
+}
+.fr{
+	float: right;
+	overflow: hidden;
+}
+.fixed{
+	position: fixed;
+}
+
+/*index->header*/
+.header{
+	display: inline-block;
+	width: 640px;
+	/*border: 1px solid red;*/
+	height: 40px;
+	overflow: hidden;
+	align-items: center;  
+	display: flex;  
+	z-index: 999;
+}
+.header .logo{
+	width: 18%;
+	height: 26px;
+	background: url(../img/top_logo.png) no-repeat;
+	background-size: 80% 26px;
+	position: absolute;
+	top: 10px;
+	left: 0;
+}
+.header .search{
+	width: 70%;
+	height: 30px;
+	margin: 0 auto;
+	/*border: 1px solid blue;*/
+}
+.header .search span{
+	width: 20px;
+	height: 20px;
+	background: url(../img/top_search.png);
+	background-size: 20px 20px;
+	position: absolute;
+	top: 12px;
+	left: 16%;
+}
+.header> .search> input,
+.header> .search> input:focus{
+	width: 100%;
+	height: 30px;
+	border-radius: 50px;
+	padding-left: 30px;
+	border: 1px solid #BBBBBB;
+	outline: none;
+	font-size: 15px;
+}
+.header .login{
+	color: #ffffff;
+/*	border: 1px solid #000000;*/
+	position: absolute;
+	right: 20px;
+	top: 10px;
+}
+
+/*swiper*/
+.swiper-container{
+	height: 300px;
+	overflow: hidden;
+}
+.swiper-container .swiper-slide img{
+	height: 320px;
+}
+
+/*nav*/
+.nav ul{
+	width: 100%;
+	height: 60px;
+	text-align: center;
+	margin-top:20px;
+	margin-bottom: 24px;
+}
+.nav ul li{
+	width: 10%;
+}
+.nav ul li{
+	margin: 0 5% 0 3%;
+}
+.nav ul li img{
+	width: 60%;
+	height: 60%;
+}
+
+/*推荐*/
+.tuijian{
+	background: #F3F3F3;
+	border-top: 1px solid #DCDCDC;
+	margin-top: 20px;
+}
+
+.miaosha,.marketOne,.marketTwo,.marketThree{
+	width: 98%;
+	margin: 0 auto;
+	background: #ffffff;
+	margin-top: 10px;
+}
+.miaosha .miaosha-title{
+	margin: 10px;
+	height: 40px;
+}
+.miaosha .miaosha-title .miaosha-logo{
+	width: 18px;
+	height: 22px;
+	position: absolute;
+	margin-top: 6px;
+}
+.miaosha .miaosha-title p{
+	margin-left: 32px;
+	font-size: 15px;
+	padding-top: 8px;
+}
+.miaosha .miaosha-title p span:not(:first-child){
+	background: #000;
+	color: #fff;
+	display: inline-block;
+	width: 1em;
+	text-align: center;
+}
+.miaosha .miaosha-list{
+	text-align: center;
+	/*border: 1px solid blue;*/
+}
+.miaosha .miaosha-list .miaosha-list-item{
+	display: inline-block;
+	width: 22%;
+	padding: 0 4% 0 4%;
+}
+.miaosha .miaosha-list .miaosha-list-item:not(:last-child) img{
+	padding: 0 20% 0 0px;
+	border-right: 1px solid #DCDCDC;
+}
+.miaosha .miaosha-list .miaosha-list-item img{
+	width: 100%;
+	height: 100%;
+}
+.miaosha .miaosha-list .miaosha-list-item .afterPrice{
+	font-size: 17px;
+}
+
+.marketOne,.marketTwo,.marketThree{
+	height: 360px;
+	overflow: hidden;
+}
+.marketOne .market-title,
+.marketTwo .market-title,
+.marketThree .market-title{
+	font-size: 15px;
+	display: block;
+	height: 20px;
+	padding-top: 6px;
+	margin-bottom: 6px;
+	margin-left: 1em;
+}
+.marketOne .market-title span,
+.marketTwo .market-title span,
+.marketThree .market-title span{
+	display: inline-block;
+	height: 12px;
+	width: 4px;
+	margin-right: 6px;
+	background:#D82A1A;
+}
+/*market*/
+.marketOne .fl,
+.marketTwo .fl,
+.marketThree .fl,
+.marketOne .fr,
+.marketTwo .fr,
+.marketThree .fr{
+	width: 50%;
+	height: 100%;
+	
+}
+
+.marketOne a,
+.marketTwo a,
+.marketThree a{
+	display: block;
+	/*border: 1px solid yellowgreen;*/
+}
+
+.marketOne .fl a,
+.marketTwo .fr a,
+.marketThree .fl a{
+	width: 99.7%;
+	height: 99.7%;
+}
+.marketOne .fr a,
+.marketTwo .fl a,
+.marketThree .fr a{
+	width: 99.7%;
+	height: 49%;
+}
+.marketOne .fl img,
+.marketTwo .fr img,
+.marketThree .fl img{
+	width: 99%;
+	height: 99%;
+}
+.marketOne .fr img,
+.marketTwo .fl img,
+.marketThree .fr img{
+	width: 99%;
+	height: 99%;
+}
+.marketOne .fl a,
+.marketTwo .fl a,
+.marketThree .fl a{
+	border-top: 1px solid #DCDCDC;
+	border-right:1px solid #DCDCDC;
+}
+.marketOne .fr a,
+.marketThree .fr a,
+.marketTwo .fr a{
+	border-top: 1px solid #DCDCDC;
+}
+

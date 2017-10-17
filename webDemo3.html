@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现三列自适应布局</title>
+		<style type="text/css">
+			/*方法一：绝对定位法
+			 将左右两侧分别使用绝对定位，通过left/right使之分别固定在左右两侧，并设置宽度
+			 设置中间部分的margin为左侧的宽度
+			*/
+			*{
+				margin: 0;
+				padding: 0;
+				height: 500px;
+			}
+			.left{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 30%;
+				background: #69A6D1;
+			}
+			.right{
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 30%;
+				background: #ADADAD;
+			}
+			.main{
+				background: #99CCFF;
+				margin: 0 30%;
+			}
+			
+			/*方法二：浮动法
+			 设置左右两栏分别左右浮动
+			 * */
+			/*
+			.left{
+				width: 30%;
+				float: left;
+				background: #69A6D1;
+			}
+			.right{
+				width: 30%;
+				float: right;
+				background: #ADADAD;
+			}
+			.main{
+				width: 40%;
+				float: left;
+				background: #99CCFF;
+			}*/
+		</style>
+	</head>
+	<body>
+			<div class="left">
+				left
+			</div>
+			<div class="main">
+				main
+			</div>
+			<div class="right">
+				right
+			</div>
+	</body>
+</html>

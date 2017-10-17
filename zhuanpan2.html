@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>有后台控制抽奖结果的转盘</title>
+		<style type="text/css">
+			table{ 
+				border-collapse:collapse;
+			}
+			table td{
+				width: 40px;
+				height: 40px;
+				border: 1px solid #2981A9;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<table id="tb" cellspacing="0" >
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+			</tr>
+			<tr>
+				<td>16</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>6</td>
+			</tr>
+			<tr>
+				<td>15</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<td>14</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td>12</td>
+				<td>11</td>
+				<td>10</td>
+				<td>9</td>
+			</tr>
+		</table>
+	</body>
+	<script type="text/javascript">     
+     /*
+      * 删除左右两端的空格
+      */
+     function Trim(str){
+         return str.replace(/(^\s*)|(\s*$)/g, ""); 
+     }
+     
+        /*
+         * 定义数组
+         */
+        function GetSide(m,n){
+            //初始化数组
+            var arr = [];
+            for(var i=0;i<m;i++){
+                arr.push([]);
+                for(var j=0;j<n;j++){
+                    arr[i][j]=i*n+j;
+                }
+            }
+            //获取数组最外圈
+            var resultArr=[];
+            var tempX=0,
+             tempY=0,
+             direction="Along",
+             count=0;
+            while(tempX>=0 && tempX<n && tempY>=0 && tempY<m && count<m*n)
+            {
+                count++;
+                resultArr.push([tempY,tempX]);
+                if(direction=="Along"){
+                    if(tempX==n-1)
+                        tempY++;
+                    else
+                        tempX++;
+                    if(tempX==n-1&&tempY==m-1)
+                        direction="Inverse"
+                }
+                else{
+                    if(tempX==0)
+                        tempY--;
+                    else
+                        tempX--;
+                    if(tempX==0&&tempY==0)
+                        break;
+                }
+            }
+            return resultArr;
+        }
+        
+        var index=0,           //当前亮区位置
+        prevIndex=0,          //前一位置
+        Speed=300,           //初始速度
+        Time,            //定义对象
+        arr = GetSide(3,4),         //初始化数组
+        EndIndex=0,           //决定在哪一格变慢
+        tb = document.getElementById("tb"),     //获取tb对象 
+        cycle=0,           //转动圈数   
+        EndCycle=0,           //计算圈数
+        flag=false,           //结束转动标志 
+        quick=0;           //加速
+        btn = document.getElementById("btn1")
+        
+        hit_info;   //中奖名称
+        function StartGame(){
+            clearInterval(Time);
+             cycle=0;
+             flag=false;
+             //EndCycle=2;
+             EndCycle=Math.floor(Math.random()*2+2);
+            $.ajax({     
+                url:'index.php?act=huodong_2015yurenjie&op=getdata&lottery_id=1', 
+                type:'post', 
+                //data:'hash="<?php echo $output['hash'];?>"&sid=<?php echo session_id();?>',
+                data:{
+                    'hash' : '<?php echo $output['hash'];?>',
+                    'sid' : '<?php echo session_id();?>'
+                },
+               // cache:false,    
+                dataType:'json',
+                async : false, //默认为true 异步     
+                error:function(){     
+                   alert('获取失败，请稍后重试');     
+                },     
+                success:function(data){     
+                   //alert(data);
+                   if(data['error']==1){
+                        alert(data['message']);
+                   }else{
+                     info=data['data'];
+                     EndIndex=info['hit_pos'];
+                     hit_info=info['hit_info'];
+                     Time = setInterval(Star,Speed);
+                   }
+                  
+                }  
+            });  
+
+           
+            // alert(EndIndex);
+             
+         
+        }
+        
+        function Star(num){
+            //跑马灯变速
+            if(flag==false){
+                //走五格开始加速
+                if(quick==5){
+                    clearInterval(Time);
+                    Speed=50;
+                    Time=setInterval(Star,Speed);
+                }
+                //跑N圈减速
+                if(cycle==EndCycle+1 && index==parseInt(EndIndex)){
+                    //alert(parseInt(EndIndex));
+                    clearInterval(Time);
+                    Speed=300;
+                    flag=true;       //触发结束    
+                    Time=setInterval(Star,Speed);
+                }
+            }
+            
+            if(index>=arr.length){
+                index=0;
+                cycle++;
+            }
+            
+           //结束转动并选中号码
+         //trim里改成数字就可以减速，变成Endindex的话就没有减速效果了
+         //if(flag==true && index==parseInt(Trim('5'))-1){ 
+            if(flag==true && index==EndIndex-1){ 
+                 quick=0;
+                 clearInterval(Time);
+            }
+            tb.rows[arr[index][0]].cells[arr[index][1]].className="playcurr";
+            if(index>0)
+                prevIndex=index-1;
+            else{
+                prevIndex=arr.length-1;
+            }
+            tb.rows[arr[prevIndex][0]].cells[arr[prevIndex][1]].className="playnormal";
+            index++;
+            quick++;
+            if(flag==true && index==EndIndex){ 
+                 var parent=document.getElementById("hit_list");
+                  var childNode=document.createElement('li');
+                 childNode.innerHTML=<?php echo $_SESSION['member_mobile']?>+"　"+hit_info['prize_name'];
+                 parent.insertBefore(childNode,parent.childNodes[0]);
+                 alert("恭喜你获得第"+EndIndex+"号奖品:"+hit_info['prize_name']);
+            }
+        }
+          
+	</script>
+</html>

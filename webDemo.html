@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>布局左不动右边自适应的两列布局</title>
+		<style type="text/css">
+			/*方法一：左边定宽，且浮动left*/
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#left{
+				background: #007AFF;
+				width: 250px;/*定宽*/
+				float: left;/*浮动*/
+				height: 500px;
+			}
+			#content{
+				background: #BBBBBB;
+				height: 500px;
+			}
+			
+			
+			/*方法二：左边绝对定位，并定宽，右边的margin-left为左边的宽度*/
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#left{
+				position: absolute;/*绝对定位*/
+				background: #007AFF;
+				width: 250px;/*定宽*/
+				height: 500px;
+			}
+			#content{
+				background: #BBBBBB;
+				height: 500px;
+				margin-left: 250px;/*等于左边宽度*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="left">left</div>
+		<div id="content">content</div>
+	</body>
+</html>

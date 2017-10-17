@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现布局两列等高</title>
+		<style type="text/css">
+			#box{
+				width: 800px;
+				margin: 0 auto;				
+			}
+			.col{
+				/*以下一句是核心代码*/
+				display:table-cell;/*实现两列等高*/
+				width: 400px;
+
+			}
+			.col:first-child{
+				background: #C9E2B3;/*更改颜色方便查看*/
+			}
+			.col:last-child{
+				background: #A6E1EC;/*更改颜色方便查看*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div class="col">
+				<p>123</p>
+				<p>345</p>
+				<p>456</p>
+				<p>456</p>
+			</div>
+			<div class="col">
+				9090
+			</div>
+		</div>
+	</body>
+</html>

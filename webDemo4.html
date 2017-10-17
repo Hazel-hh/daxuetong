@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS实现GIF动图的停止与开始(骰子)</title>
+		<style type="text/css">
+		</style>
+	</head>
+
+	<body>
+		<!--动图-->
+		<img src="img/all/webDemo4-1.gif" alt="gifImg" id="gifImg" />
+		<input type="button" name="btn" id="btn" value="暂停" onclick="stop()" />
+
+	</body>
+	<script type="text/javascript">
+		var image = document.getElementById("gifImg");
+		var button = document.getElementById("btn");
+		function stop() {	
+			var max = 6;
+			var randomNum = Math.floor(Math.random()*max)+1;
+			console.log(randomNum);
+			if((button.value == "暂停") && randomNum == 1) {
+				//静态图片，可以自定义控制显示
+				image.src = "img/all/link1.jpg"
+				button.value = '播放';
+				console.log('已暂停');
+			} else if((button.value == "暂停") && randomNum == 2) {
+				//静态图片，可以自定义控制显示
+				image.src = "img/all/link2.jpg"
+				button.value = '播放';
+				console.log('已暂停');
+			} else if((button.value == "暂停") && randomNum == 3) {
+				//静态图片，可以自定义控制显示
+				image.src = "img/all/link3.jpg"
+				button.value = '播放';
+				console.log('已暂停');
+			} else if((button.value == "暂停") && randomNum == 4) {
+				//静态图片，可以自定义控制显示
+				image.src = "img/all/link4.jpg"
+				button.value = '播放';
+				console.log('已暂停');
+			} else if((button.value == "暂停") && randomNum == 5) {
+				//静态图片，可以自定义控制显示
+				image.src = "img/all/link5.jpg"
+				button.value = '播放';
+				console.log('已暂停');
+			} else if((button.value == "暂停") && randomNum == 6) {
+				//静态图片，可以自定义控制显示
+				image.src = "img/all/link6.jpg"
+				button.value = '播放';
+				console.log('已暂停');
+			} else{
+				//动图
+				image.src = "img/all/webDemo4-1.gif"
+				button.value = '暂停';
+				console.log('已开始');
+			} 
+		}
+	</script>
+</html>
