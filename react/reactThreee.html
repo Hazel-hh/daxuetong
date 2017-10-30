@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动态显示input输入的内容</title>
+		<style type="text/css">
+			.a span{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="well">
+			
+		</div>
+		<script type="text/javascript" src="../JD/js/jquery-2.1.4.min.js" ></script>
+		<script type="text/javascript" src="../build/react.js" ></script>
+		<script type="text/javascript" src="../build/react-dom-0.14.0.js" ></script>
+		<script type="text/javascript" src="../build/browser.min.js" ></script>
+		<script type="text/babel">
+			var Text = React.createClass({
+				getInitialState: function(){
+					return {name:"react"};
+				},
+				keyUp: function(e){
+					this.setState({name: e.target.value});
+					console.log(this.state.name);
+				},
+				render: function(){
+					return (
+						<div className="a">
+							这是用<span>{this.state.name}</span>渲染出来的!
+							<input onKeyUp={this.keyUp} />
+						</div>
+					);
+				}
+			});
+			ReactDOM.render(
+				<Text></Text>,
+				document.getElementById('well')
+			);
+		</script>
+	</body>
+</html>

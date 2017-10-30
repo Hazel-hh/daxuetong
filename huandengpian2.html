@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>幻灯片2纯CSS实现</title>
+		  <style>  
+        #cont {  
+            position: relative;  
+            height: 100px;  
+        }  
+        img {  
+            position: absolute;  
+            width: 100px;  
+            height: 100px;  
+            z-index: 1;  
+        }  
+        img:first-child,  
+        img:target {  
+            z-index: 2;  
+        }  
+    </style> 
+	</head>
+	<body>
+		<div id="cont">  
+		    <img id="img1" src="img/all/link1.jpg">  
+		    <img id="img2" src="img/all/link2.jpg">  
+		</div>  
+		<div>  
+		    <a href="#img1">1</a>  
+		    <a href="#img2">2</a>  
+		</div>  
+	</body>
+</html>

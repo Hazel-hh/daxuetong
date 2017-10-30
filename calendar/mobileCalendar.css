@@ -1,0 +1,54 @@
+body{background-color:#efefef}
+a{-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-moz-tap-highlight-color:rgba(0, 0, 0, 0);-ms-tap-highlight-color:rgba(0, 0, 0, 0);  
+-o-tap-highlight-color:rgba(0, 0, 0, 0);tap-highlight-color:rgba(0, 0, 0, 0);} 
+#CalendarMain{float:left; margin-top:10px;width:100%;height:300px;}
+#title{float:left; width:100%;height:40px;background-color:#60a7e8}
+.selectBtn{padding:12px 10px 11px 10px;color:#fff;text-decoration:none;font-weight:900;font-size:15px;cursor:pointer}
+
+
+.selectYear{position:absolute;float:left;margin-left:60px}
+.selectMonth{position:absolute;float:left;margin-left:130px}
+.month{position:absolute;float:left}
+.nextMonth{float:right}
+.currentDay{float:right}
+
+
+#context{float:left; width:100%;background-color:#fff;}
+.week{width:100%;height:30px;background-color:#fff; color:#333;}
+.week>h3{float:left;margin:0;padding:0;margin-top: 5px;color:#333;text-align:center;font-size:15px}
+.dayItem{float:left;padding-bottom:15px;background-color:#fff;}
+
+
+/*上月和当月余下的日期填充*/
+.lastItem{color:#d1c7b7 !important; cursor:default;}
+.lastItem>a{color:#d1c7b7 !important;cursor:default;}
+.item{float:left;margin:0;color:#333;text-align:center;font-size:13px;font-family:"微软雅黑";cursor:pointer;}
+.item:hover{color:#b9121b}
+
+
+/*当前日期的颜色*/
+.currentItem>a{float:left;width:25px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;background-color:#5fa4e7;color:#fff;line-height:25px}
+/*手指点击日期后颜色*/
+.clickItem>a{float:left;width:25px;height:25px; line-height:25px;background-color:#ccc; color:#333;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;}
+
+
+#foots{margin-top:-1px;width:100%;height:35px;border-top:1px solid #ccc;background-color:#fff}
+#footNow{float:left;margin:6px 0 0 5px;color:#009ad6;font-family:"微软雅黑"}
+#Container{float:left;overflow:hidden}
+
+
+#center{float:left; overflow:hidden;width:100%;margin-bottom:5px;}
+#centerMain{width: 300%; margin-left: -100%;}
+#selectYearDiv{float:left;width:100%;background-color:#fff}
+#selectYearDiv>div{float:left;margin-top:-1px;margin-left:-1px;border:1px solid #eee;color:#909090;text-align:center;font-size:16px;font-family:"微软雅黑";cursor:pointer}
+.currentMontSd,.currentYearSd{color:#f40!important}
+#selectMonthDiv{float:left;width:100%;background-color:#fff}
+#selectMonthDiv>div{float:left;margin-top:-1px;margin-left:-1px;border:1px solid #eee;color:#909090;text-align:center;font-size:16px;font-family:"微软雅黑";cursor:pointer}
+#selectMonthDiv>div:hover,#selectYearDiv>div:hover{background-color:#efefef}
+#centerCalendarMain{float:left}
+
+
+/*底部显示信息*/
+.downdiv{float:left;width:100%;background-color:#fff;margin-top:-10px; padding:5px 0;}
+.downdiv-time{float:left;width:92%;padding:5px 3%;margin-left:1%; line-height:18px; text-indent:3px;}
+.zhibanDiv{float:left;width:92%;padding:5px 3%;margin-left:1%; }

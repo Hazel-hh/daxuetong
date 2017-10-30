@@ -1,4 +1,12 @@
 /*common*/
+/*尺寸适配*/
+html{
+	font-size: 20px;
+}
+body{
+	font-size: 14px;
+}
+/*尺寸适配 end，在此种情况下，1rem等于20px*/
 body{
 	max-width: 640px;
 	margin: 0 auto;

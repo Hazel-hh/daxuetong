@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js生成JSON数据</title>
+	</head>
+	<body>
+		
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		//前端传递数据到后台的3种方式
+		
+		//1、ajax
+		//传给后台的数据通过json封装起来，再用ajax将json传到后台，需要添加jquery库
+		window.onload = function(){
+			//生成json
+			var json = [];
+			//实际情况中，json对象的值可通过document.getElementByName()来获取用户输入
+			for (var i = 1; i < 5; i++){
+				var j = {};
+				j.name = "name";
+				j.cars = "22";
+				j.obj = i;
+				json.push(j);
+			}
+			var a = JSON.stringify(json);
+			alert(a);//json
+			
+			//传递到后台
+			$.ajax({
+				type:'POST',
+				data:a,//json
+				contentType:'application/json',
+				dataType:'json',
+				url:'user/saveJsonUser.do',
+				success:function(data){
+					alert("发送成功");
+				},
+				error:function(e){
+					alert("发送失败");
+				}
+			});
+		}
+		
+		
+		
+		//2、在action中请求后台。
+		//一般情况下数值在传给后台之前需要校验，可以在form中的onsubmit调用js方法进行校验
+		//当js方法返回值为true时，触发action
+		//当js方法返回值为false时，action不触发
+		
+		
+		//3、通过dom获取标签，触发标签的submit方法，直接提交数据到后台
+		function query(){
+			var inputs = document.getElementsByName("sex");//对象是单选选项
+			for(var i = 0; i < inputs.length; i++){
+				if(inputs[i].checked){
+					//判断是否选中
+					var sex = inputs[i].value;
+					document.getElementById("query").action = projectName+"query.do?currentPage=1&stsex="+sex;
+					break;
+				} else{
+					document.getElementById("query").action = projectName+"query.do?currentPage=1";
+				}
+			}
+			document.getElementById("query").submit();//提交到后台
+		}
+	</script>
+</html>

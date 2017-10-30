@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>常用正则表达式</title>
+		<style type="text/css">
+			.disNone{
+				display: none;
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="" method="post" onsubmit="return check()">
+			<p>
+			<input type="text" name="name" id="name" value="" placeholder="请输入用户名"/>
+			<span id="nameSpan" class="disNone">*用户名格式不正确</span>
+			</p>
+			
+			<input type="text" name="age" id="age" value="" placeholder="请输入年龄"/>
+			<span id="ageSpan" class="disNone">*年龄格式不正确</span>
+			</p>
+			
+			<p>
+			<input type="email" name="email" id="email" value="" placeholder="请输入邮箱地址"/>
+			<span id="emailSpan" class="disNone">*邮箱格式不正确</span>
+			</p>
+			
+			<p>
+			<input type="text" name="phone" id="phone" value="" placeholder="请输入手机号"/>
+			<span id="phoneSpan" class="disNone">*手机号格式不正确</span>
+			</p>
+			
+			<p>
+			<input type="text" name="IDCard" id="IDCard" value="" placeholder="请输入身份证号"/>
+			<span id="IDCardSpan" class="disNone">*身份证号格式不正确</span>
+			</p>
+			
+			<input type="submit" value="提交"/>
+		</form>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">			
+			function check(){			
+				var nameReg = /^[a-zA-Z][a-zA-Z0-9_]{4,15}$/;//姓名的正则表达式,字母开头，允许5-16字节，允许字母数字下划线
+				var ageReg = /^(?:[0-9][0-9]?|1[01][0-9]|120)$/;//年龄的正则表达式0-120
+				var emailReg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;//邮箱的正则表达式
+				var phoneReg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;//手机号的正则表达式
+				var IDCradReg = /^\d{15}|\d{18}$/;//身份证号的正则表达式
+				
+				var flag = true;
+				if(!nameReg.test($('#name').val())){					
+					$('#nameSpan').show();
+					flag = false;
+				} else{
+					$('#nameSpan').hide();
+				}
+				if(!ageReg.test($('#age').val())){
+					//alert("年龄格式不正确");
+					$('#ageSpan').show();
+					flag = false;
+				} else {
+					$('#ageSpan').hide();
+				}
+				if(!emailReg.test($('#email').val())){
+					
+					//alert("邮箱格式不正确");
+					$('#emailSpan').show();
+					flag = false;
+				} else {
+					$('#emailSpan').hide();
+				}
+				if(!phoneReg.test($('#phone').val())){					
+					//alert("手机号格式不正确");
+					$('#phoneSpan').show();
+					flag = false;
+				} else {
+					$('#phoneSpan').hide();				
+				}
+				if(!IDCradReg.test($('#IDCard').val())){					
+					//alert("身份证格式不正确");
+					$('#IDCardSpan').show();
+					flag = false;
+				} else {
+					$('#phoneSpan').hide();
+				}
+				return flag;
+			}
+		</script>
+	</body>
+</html>

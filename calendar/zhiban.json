@@ -1,0 +1,19 @@
+{
+   "zhiban":[
+  {
+    "banci":"早班",
+"daibanLeader":"王凤",
+"zhibanGB":"王杰"
+  },
+  {
+    "banci":"晚班",
+"daibanLeader":"王凤",
+"zhibanGB":"施琳琳"
+  },
+  {
+    "banci":"夜班",
+"daibanLeader":"王凤",
+"zhibanGB":"赵冲"
+  }
+   ]
+}

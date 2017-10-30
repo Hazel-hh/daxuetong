@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta content="width=device-width,user-scalable=no" name="viewport" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" />
+		<title>手机日历</title>
+		<link href="animate.css" rel="stylesheet" />
+		<link href="specialMobile.css" rel="stylesheet" />
+		<link href="process.css" rel="stylesheet" />
+		<link href="mobileCalendar.css" rel="stylesheet" />
+		<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+	</head>
+
+	<body style="background-color: #f4f5fa;">
+		<div class="mobile-top">
+			值班安排
+			<div class="left">
+				<a href="application.html"><i class="fontello icon-left-open-big">&#xe93f;</i></a>
+			</div>
+		</div>
+		<div class="mobile animated fadeInRight">
+			<div id="Demo">
+				<div id="CalendarMain">
+					<div id="title">
+						<a class="selectBtn month" href="javascript:" onclick="CalendarHandler.CalculateLastMonthDays();">
+							<</a>
+								<a class="selectBtn selectYear" href="javascript:" onclick="CalendarHandler.CreateSelectYear(CalendarHandler.showYearStart);">2014年</a>
+								<a class="selectBtn selectMonth" onclick="CalendarHandler.CreateSelectMonth()">6月</a>
+								<a class="selectBtn nextMonth" href="javascript:" onclick="CalendarHandler.CalculateNextMonthDays();">></a>
+								<a class="selectBtn currentDay" href="javascript:" onclick="CalendarHandler.CreateCurrentCalendar(0,0,0);">今天</a>
+					</div>
+					<div id="context">
+						<div class="week">
+							<h3>一 </h3>
+							<h3>二 </h3>
+							<h3>三 </h3>
+							<h3>四 </h3>
+							<h3>五 </h3>
+							<h3>六 </h3>
+							<h3>日 </h3>
+						</div>
+						<div id="center">
+							<div id="centerMain">
+								<div id="selectYearDiv"></div>
+								<div id="centerCalendarMain">
+									<div id="Container"></div>
+								</div>
+								<div id="selectMonthDiv"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="downdiv">
+				<div class="downdiv-time">
+					<label id="lblTime"></label>
+				</div>
+				<div class="zhibanDiv">
+					<table class="grid">
+						<thead>
+							<tr>
+								<th>班次</th>
+								<th>带班领导</th>
+								<th>值班干部</th>
+							</tr>
+						</thead>
+						<tbody id="zbtbody">
+							<!--<tr>
+                            <td>早班</td>
+                            <td rowspan="3">王凤</td>
+                            <td>王杰</td>
+                        </tr>
+                        <tr>
+                            <td>晚班</td>
+                            <td>施琳琳</td>
+                        </tr>
+                        <tr>
+                            <td>夜班</td>
+                            <td>赵冲</td>
+                        </tr>-->
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</body>
+
+</html>

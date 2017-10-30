@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS实现幻灯片效果</title>
+		<style type="text/css">
+			.huanDengPic{
+				width: 600px;
+				height: 400px;
+				margin: 0 auto;
+				overflow: hidden;
+				
+				box-shadow: 0 0 5px rgba(0,0,0,1);
+				background-size: cover;
+				background-position: center;
+				-webkit-animation-name: "loops";
+				-webkit-animation-duration: 10s;
+				-webkit-animation-iteration-count: infinite;
+			}
+			
+			@-webkit-keyframes "loops"{
+				0%{
+					background: url(img/gongju/gongju1.png) no-repeat;
+					background-size: 100% 100%;
+				}
+				50%{
+					background: url(img/gongju/gongju2.png) no-repeat;
+					background-size: 100% 100%;
+				}
+				100%{
+					background: url(img/gongju/gongju3.jpg) no-repeat;
+					background-size: 100% 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="huanDengPic">
+			
+		</div>
+		
+	</body>
+</html>
